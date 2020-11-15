@@ -1,0 +1,260 @@
+/*
+.buscar-cx {
+ position: relative;
+ background: #2f3640;
+ height: 20px;
+ border-radius: 40px;
+ padding: 10px;
+ display: inline-block;
+}
+
+.buscar-cx:hover > .buscar-txt {
+ width: 240px;
+ padding: 0 6px;
+}
+
+.buscar-cx:hover > .buscar-btn {
+ background: white;
+ color: black;
+}
+
+.far{
+  background-size: contain;
+  background-image: url(../images/icon-lupa.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  cursor: pointer;
+   font-size: 20px;
+}
+
+
+.buscar-txt {
+ border: none;
+ background: none;
+ outline: none;
+ float: left;
+ padding: 0;
+ color: white;
+ font-size: 14px;
+ transition: 0.4s;
+ line-height: 20px;
+ width: 0px;
+ font-weight: bold;
+}
+/* ---------------------- interruptor ------------------------------- */
+.liga-desliga{
+  margin-left: 20%;
+  display: inline-block;
+}
+.liga-desliga__checkbox {
+  position: absolute;
+  left: -9999px;
+}
+
+.liga-desliga__botao {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  cursor: pointer;
+}
+
+.liga-desliga__botao::before,
+.liga-desliga__botao::after {
+  content: "";
+  box-shadow: 0 0 0 1px #CCC;
+  transition: all 0.2s ease;
+}
+
+.liga-desliga__botao::before {
+  display: inline-block;
+  border-radius: 1em;
+  height: 1em;
+  width: 2em;
+  margin-right: 0.5em;
+  background: #900;
+}
+
+.liga-desliga__botao::after {
+  position: absolute;
+  top: 0.025em;
+  left: 0.025em;
+  width: 0.95em;
+  height: 0.95em;
+  border-radius: 100%;
+  background: #FFF;
+}
+
+.liga-desliga__checkbox:checked + .liga-desliga__botao::before {
+  background: #55D069;
+}
+
+.liga-desliga__checkbox:checked + .liga-desliga__botao::after {
+  left: 1.025em;
+}
+
+.liga-desliga__checkbox:focus + .liga-desliga__botao::before {
+  outline: 3px dotted #CCC;
+}
+
+
+/* campos de checkbox */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+/*Page styles*/
+
+
+.boxes {
+  background: #484848;
+}
+
+/*Checkboxes styles*/
+.boxes input[type="checkbox"]{
+  display: none;
+}
+.boxes label{
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+}
+.boxes input[type="checkbox"] + label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  font: 14px/20px 'Open Sans', Arial, sans-serif;
+  color: #ddd;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.boxes input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+
+.boxes input[type="checkbox"] + label:before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #6cc0e5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .6;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+}
+
+.boxes input[type="checkbox"]:checked + label:before {
+  width: 5px;
+  top: -2.5px;
+  left: 2.5px;
+  border-radius: 0;
+  opacity: 1;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+#frm-tam, #frm-status{
+  grid-template-columns: 1fr 1fr;
+  padding-left: 10%;
+  padding-top: 10%;
+  width: 100%;
+}
+.filtro{
+  display: inline-block;
+}
+
+#btnfiltros, #btnfiltros tr{
+  background: #484848;
+  border: 0;
+}
+
+/* ---------------------- css menu dos filtros ------------------------------- */
+
+.wrapper {
+  display: none;
+  width: 100%;
+}
+.tabs {
+  position: relative;
+  /* margin: 3rem 0; */
+  background: #484848;
+  height: 14.75rem;
+}
+.tabs::before,
+.tabs::after {
+  content: "";
+  display: table;
+}
+.tabs::after {
+  clear: both;
+}
+.tab {
+  float: left;
+}
+.tab-switch {
+  display: none;
+}
+.tab-label {
+  position: relative;
+  display: block;
+  line-height: 2.75em;
+  height: 3em;
+  padding: 0 1.618em; /* esse ta cagado */
+  background: #484848;
+
+  color: #fff;
+  cursor: pointer;
+  top: 0;
+  transition: all 0.25s;
+}
+.tab-label:hover {
+  top: -0.25rem;
+  transition: top 0.25s;
+}
+.tab-content {
+  /* height: 12rem; */
+  position: absolute;
+  z-index: 1;
+  top: 2.75em;
+  left: 0;
+  /* padding: 1.618rem; */
+  background: #fff;
+  color: #2c3e50;
+  /* border-bottom: 0.25rem solid #bdc3c7; */
+  opacity: 0;
+  transition: all 0.35s;
+    grid-template-columns: 1fr 1fr;
+}
+.tab-switch:checked + .tab-label {
+  background: #fff;
+  color: #2c3e50;
+  border-bottom: 0;
+  border-right: 0.125rem solid #fff;
+  transition: all 0.35s;
+  z-index: 1;
+  top: -0.0625rem;
+}
+.tab-switch:checked + label + .tab-content {
+  z-index: 2;
+  opacity: 1;
+  transition: all 0.35s;
+} */

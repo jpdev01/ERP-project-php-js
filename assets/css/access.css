@@ -1,0 +1,9 @@
+html body{
+  background-color: #DCDCDC;
+}
+.block{
+position: absolute;
+top: 50%;
+display: table-cell;
+vertical-align: middle;
+}
