@@ -215,17 +215,22 @@ include "security/database/connection.php";
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
   <!-- <script src="assets/demo/chart-area-demo.js"></script>
   <script src="assets/demo/chart-bar-demo.js"></script> -->
-  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+
   <!-- <script src="assets/demo/datatables-demo.js"></script> -->
 
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="assets/imports/perfect-scrollbar.js"></script>
   <!-- <script type="text/javascript" src="assets/imports/perfect-scrollbar.min.js"></script> -->
   <script type="text/javascript" src="assets/js/scroll.js"></script>
 
   <script type="text/javascript" src="assets/js/excel.js"></script>
+
+  <script type="text/javascript" src="assets/js/modal.js"></script>
+
+
 </body>
 </html>
