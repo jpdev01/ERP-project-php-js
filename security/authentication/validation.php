@@ -3,8 +3,6 @@
 
 session_start();
 
-var_dump($_SESSION);
-
 if(!isset($_SESSION['idsessao'])||($_SESSION['idsessao']!= session_id())){
   lockPermission("index.php");
 }else{

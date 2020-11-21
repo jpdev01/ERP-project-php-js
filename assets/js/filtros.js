@@ -27,22 +27,40 @@ $(document).ready(function(){
   $('#search').keyup(function(){
     search_table($(this).val());
   });
+
   $('#check-status').change(function(){
-    category = $("#category").val();
+    pathFolder = $("#check-status").val();
+    alert(pathFolder);
+    /*
+    pathFolder = $("#pathFilter").val();
+    pathFolder = pathFolder.split(";");
+    if (pathFolder[0]="filter=category"){
+      category = pathFolder[1].split("=");
+      category = category[1];
+      provider = '';
+    }else if (pathFolder[0]="filter=provider"){
+      provider = pathFolder[1].split("=");
+      provider = provider[1];
+      provider = '';
+    }
     provider = $("#provider").val();
     status = $('#check-status').val();
+    
     valores = {
       status: status,
-      category: category,
-      provider: provider
+      categoryid: category,
+      providerid: provider
     };
+    */
+   
+    search_table($("#check-status").val());
     // if($("#check-status").is(':checked')){
     //   valores ={status : 0};
     // }
     // else{
     //   valores ={status : 'todos'};
     // }
-    load_dados(valores, 'app/products/pesquisa.php', '#content2');
+    //load_dados(valores, 'app/products/pesquisa.php', '#content2');
   });
   // $('#check-status-catg').change(function(){
   //   alert('oi');

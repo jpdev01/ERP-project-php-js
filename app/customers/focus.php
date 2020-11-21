@@ -3,6 +3,8 @@
 // if(isset($_SERVER['HTTP_REFERER'])) {
 //     $previous = $_SERVER['HTTP_REFERER'];
 // }
+
+
 ?>
 <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
 
@@ -18,7 +20,6 @@ $stm_sql-> execute();
 
 $cliente = $stm_sql->fetch(PDO::FETCH_ASSOC);
 //var_dump($user['email']);
-
 
 
 

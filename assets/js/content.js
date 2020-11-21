@@ -1,6 +1,10 @@
 
 
 function conteudo(div, pasta, arquivo, id, cont2, filtro){
+  if ($('#staticBackdrop').is(':visible')){
+    console.log("Retirando modal da tela...");
+    document.getElementById("btnModal").click();
+  }
   var category = "";
   var provider= "";
   if (pasta=="categories" && arquivo=="products"){
@@ -30,11 +34,6 @@ function conteudo(div, pasta, arquivo, id, cont2, filtro){
   });
 }
 $(document).ready(function(){
-
-  // $("body").addClass(function(){
-  //           return "myscroll" ;
-  //           return "h-100";
-  //   });
   $('#check-status-c').change(function(){
     var id = $("#category_id").val();
     if($("#check-status-c").is(':checked')){
@@ -62,3 +61,31 @@ $("historic.php").ready(function(){
   });
   return false;
 });
+
+function query(data, callback, div){
+  jQuery.ajax({
+    type: "POST",
+    url: "modules/requisitions-api.php",
+    data: {data: data},
+    success: function( data ){
+      alert(data);
+      if(callback){
+        callback();
+      }
+      else if(div){
+        $(div).html(data);
+      }
+    }
+  });
+}
+
+function build(div, component, options){
+  jQuery.ajax({
+    type: "POST",
+    url: "modules/"+component+"-service.php",
+    data: {options},
+    success: function( data ){
+      $(div).html(data);
+    }
+  });
+}

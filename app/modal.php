@@ -1,15 +1,29 @@
 <?php
-$id = isset($_POST['id']) ? $_POST['id'] : 0;
+$id = isset($_POST['content']) ? $_POST['content'] : '';
+if($id){
+  if($id['categoryid']){
+    $filter = "category";
+    $id = $id['categoryid'];
+  }else if($id['providerid']){
+    $filter = "provider";
+    $id = $id['providerid'];
+  }
+}
+if ($id==0){
+  $id = isset($_POST['providerid']) ? $_POST['providerid'] : 0;
+}
 $options = isset($_POST['options']) ? $_POST['options'] : 0;
-$data = (isset($_POST['data'])) ? $_POST['data'] : "Nenhum produto encontrado";
+$data = (isset($_POST['html'])) ? $_POST['html'] : "Nenhum produto encontrado";
 $titulo = (isset($options['titulo'])) ? $options["titulo"] : "Título não encontrado";
+$size = (isset($options['tamanho'])) ? $options["tamanho"] : "";
 
 
- ?>
- <button id="btnModal" type="button" class="btn btn-light" data-toggle="modal" data-target="#staticBackdrop" hidden>Abrir modal</button>
+?>
+<script type="text/javascript" src="assets/js/filtros.js"></script>
+<button id="btnModal" type="button" class="btn btn-light" data-toggle="modal" data-target="#staticBackdrop" hidden>Abrir modal</button>
 <!-- Modal -->
-<div class="modal fade bd-example-modal-xl" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+<div class="modal fade bd-example-modal-<?php echo $size; ?>" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-<?php echo $size; ?>">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel"><?php echo $titulo; ?></h5>
@@ -25,53 +39,38 @@ $titulo = (isset($options['titulo'])) ? $options["titulo"] : "Título não encon
             </div>
 
             <div class="col-md-6">
-              <div class="input-group">
-                <input class="form-control" id="search"type="text" placeholder="Pesquisar produto..." aria-label="Search" aria-describedby="basic-addon2" />
-                <div class="input-group-append">
-                  <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
-                </div>
-              </div>
+              <?php
+              if ($options['searchbar'] == 'true'){
+                include "../modules/searchbar.php";
+              }
+              ?>
             </div>
 
             <div class="col-md-3">
-              <button type="button" class="btn btn-light pull-right h2" data-toggle="collapse" data-target="#myFilters" aria-expanded="false" aria-controls="myFilters">
-                <!-- Mais filtros -->
-                <img src='assets/css/bootstrap-icons-1.0.0/funnel-fill.svg' width='100%' height='100%'>
-              </button>
+              <?php
+              if($options['filter'] == 'true'){
+                include "../modules/btnFilter.php";
+              }
+              ?>
             </div>
           </div> <!-- /#top -->
-          <div class="row">
-            <input id="category" name="category" value="" hidden>
-          <?php include "products/filters.php"; ?>
-        </div>
-          <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
-            <div class='table-responsive'>
-              <table id='employee_table' class='table table-sm table-striped'>
-                <thead class='thead-dark'>
-                  <tr>
-                    <th scope="col">Code</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  echo $data;
-                   ?>
-                </tbody>
-              </table>
-            </div>
-
+          <div class="row mt-2">
+            <?php
+            if($options['filter'] == 'true'){
+              ?>
+              <input id="pathFilter" name="category" value="filter=<?php echo $filter; ?>;id=<?php echo $id; ?>" hidden>
+              <?php
+              include "products/filters.php";
+            }
+            ?>
           </div>
-
+          <div class='row' id='#content2'>
+        <?php echo $data; ?>
+      </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>

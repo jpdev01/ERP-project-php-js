@@ -8,7 +8,7 @@ $pag = (!empty($_POST['pag']))?$_POST['pag']:null;
 if($cliente==null){
   ?>
   <tr>
-    <td colspan='3'>Nenhum cliente encontrado!</td>
+    <td colspan='3'>Nenhum cliente ou compra encontrada!</td>
   </tr>
   <?php
 }else{

@@ -1,12 +1,27 @@
+
 <div class="col-12">
-  <div id="htmlModal">
+<div id="htmlModal">
   </div>
+  <div class="row" id="top">
+    <div class="col-md-3" id='title-01'>
+      <h2></h2>
+    </div>
+
+    <div class="col-md-6">
+    <?php
+    include "modules/searchbar.php";
+    ?>
+    </div>
+
+
+  </div> <!-- /#top -->
+
   <div class="row mx-auto">
     <h4>Categorias</h4>
     <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <div class="table-responsive">
-        <table class='table table-striped table-hover table-sm pt-3'>
-          <thead class='thead-dark'>
+        <table class='table table-striped table-hover table-sm pt-3' id='employee_table'>
+          <thead class='thead-dark rounded'>
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Nome</th>  <!-- Nome -->
@@ -21,8 +36,6 @@
             <?php
             include "security/database/connection.php";
 
-            // $sql = "SELECT * FROM clientes";
-
             $sql = "SELECT * from categorias ORDER by nome ASC";
 
             $stm_sql = $db_connection->prepare($sql);
@@ -32,7 +45,7 @@
             foreach($categories as $category){//para cada linha, crie uma variavel user
               ?>
 
-              <tr onclick="find('app/products/pesquisa.php', '<?php echo $category['id']; ?>', 'todos', {callback: openModal, tamanho: 'xl', titulo: 'Produtos da categoria <?php echo $category['nome']; ?>'})">
+              <tr onclick="openModal('app/products/pesquisa.php', { categoryid: '<?php echo $category['id']; ?>'}, 'todos', {callback: '', tamanho: 'xl', titulo: 'Produtos da categoria <?php echo $category['nome']; ?>', searchbar: 'true', filter: 'true'})">
                 <td><?php echo $category['id']; ?></td>
                 <td><?php echo $category['nome'];?></td>
                 <td name="nome"><?php echo $category['dsc'];?></td>

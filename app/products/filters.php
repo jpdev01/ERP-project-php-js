@@ -1,3 +1,4 @@
+<script src="../../assets/js/filtros.js"></script>
 <div class="container collapse" id="myFilters">
   <div class="container card card-block">
     <form id='frm-customers' class="m-md-4">
@@ -7,8 +8,8 @@
             <label for="check-status">Mostrar:</label>
             <select class="form-control" id="check-status">
               <option value="todos" selected>Todos</option>
-              <option value="disponíveis">Em estoque</option>
-              <option value="indisponíveis">Indisponíveis</option>
+              <option value="Disponível">Em estoque</option>
+              <option value="Indisponível">Indisponíveis</option>
             </select>
           </div>
           <!-- <div class="form-group">

@@ -1,6 +1,4 @@
-<div class="col-12">
-  <div class="row" id="top">
-    <div class="col-md-3" id='title-01'>
+<div class="col-md-3" id='title-01'>
       <h2></h2>
     </div>
 
@@ -69,55 +67,3 @@
         </form>
       </div>
     </div>
-  </div>
-  <div class="row">
-
-    <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
-      <div class='table-responsive'>
-        <table class='table table-striped table-hover table-md' id='employee_table'>
-          <thead class='thead-dark rounded'>
-            <tr>
-              <th class="th-sm" scope='col'>Código do Cliente</th>
-              <th class="th-sm" scope='col'>Nome</th>
-              <th class="th-sm" scope='col'>CPF</th>
-              <th class="th-sm" scope='col'>Telefone</th>
-              <th class="th-sm" scope='col'>Celular</th>
-            </tr>
-          </thead>
-          <tbody id="MostraPesq">
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="row mt-3 container pull-right">
-
-
-    <div class="btn-toolbar pull-right" role="toolbar" aria-label="Toolbar with button groups">
-      <!-- <div class="btn-group mr-2" role="group" aria-label="First group">
-      <button type="button" class="btn btn-secondary">1</button>
-      <button type="button" class="btn btn-secondary">2</button>
-      <button type="button" class="btn btn-secondary">3</button>
-      <button type="button" class="btn btn-secondary">4</button>
-    </div>
-    <div class="btn-group mr-2" role="group" aria-label="Second group">
-    <button type="button" class="btn btn-secondary">5</button>
-    <button type="button" class="btn btn-secondary">6</button>
-    <button type="button" class="btn btn-secondary">7</button>
-  </div> -->
-  <div class="btn-group" role="group" aria-label="Third group">
-    <button type="button" class="btn btn-light pull-right m-2"><a href="main.php?folder=app/customers/&file=frmins.php" class="text-dark">Adicionar  <img src='assets/css/bootstrap-icons-1.0.0/plus.svg'></a></button>
-  </div>
-
-</div>
-
-<!--
-
-</div> -->
-<!-- <div class="col-sm-4" id='div-customer'>
-
-</div> -->
-<!-- </div>
-</div> -->

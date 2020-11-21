@@ -26,6 +26,7 @@ include "security/database/connection.php";
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 
 
+
 <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
 
 <!-- <script src="assets/js/dashboard.js"></script> -->
@@ -202,16 +203,15 @@ include "security/database/connection.php";
   <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
   <!-- <script type="text/javascript" src="assets/js/bootstrap.js"></script>
   <script type="text/javascript" src="assets/js/bootstrap.js.map"></script> -->
-  <script type="text/javascript" src="assets/js/filtros.js"></script>
+  
   <script type="text/javascript" src="assets/js/myscript.js"></script>
   <script type="text/javascript" src="assets/js/content.js"></script>
   <script type="text/javascript" src="assets/js/payment.js"></script>
-
+  <script type="text/javascript" src="assets/js/filtros.js"></script>
 
 
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-  <script src="assets/imports/scripts.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
   <!-- <script src="assets/demo/chart-area-demo.js"></script>
   <script src="assets/demo/chart-bar-demo.js"></script> -->
@@ -224,13 +224,14 @@ include "security/database/connection.php";
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="assets/imports/perfect-scrollbar.js"></script>
+  <script src="assets/imports/scripts.js"></script>
   <!-- <script type="text/javascript" src="assets/imports/perfect-scrollbar.min.js"></script> -->
   <script type="text/javascript" src="assets/js/scroll.js"></script>
 
   <script type="text/javascript" src="assets/js/excel.js"></script>
-
   <script type="text/javascript" src="assets/js/modal.js"></script>
-
+  <script type="text/javascript" src="assets/imports/JsBarcode.all.min.js"></script>
+  <script type="text/javascript" src="assets/js/barcode.js"></script>
 
 </body>
 </html>
