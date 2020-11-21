@@ -69,15 +69,23 @@ $(document).ready(function(){
   //   }
   // });
   $('#check-sell-pendente').change(function(){
+    see_customer_historic();
+  });
+
+  function see_customer_historic(){
     var cliente = $('#labelCliente').text();
+    if (!cliente){
+      var cliente = $('#cliente').val();
+    }
     var pag = $('#pag').val();
     if($("#check-sell-pendente").is(':checked')){
-      valores ={status : "pendente", cliente: cliente, pag: pag};
+      valores ={status : "pendente", cliente: cliente, pag: pag, modal: "true"};
     } else {
-      valores ={status : "todos", cliente: cliente, pag: pag};
+      valores ={status : "todos", cliente: cliente, pag: pag, modal: "true"};
     }
+    
     load_dados(valores, 'app/payment/find-buy.php', '#pend-cliente');
-  });
+  }
   $('#add-product').click(function(){
     load_dados(null, 'app/products/frmins.php', '#div-products');
   });

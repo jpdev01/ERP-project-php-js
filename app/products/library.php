@@ -28,6 +28,7 @@
   <div class="row mt-3">
     <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <div class='table-responsive'>
+        <!--
         <table id='employee_table' class='table table-sm table-striped'>
           <thead class='thead-dark'>
             <tr>
@@ -41,6 +42,8 @@
           </thead>
           <tbody id="content2"></tbody>
         </table>
+        -->
+        <div id="content2"></div>
       </div>
 
     </div>

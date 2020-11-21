@@ -1,4 +1,8 @@
-
+<?php
+$idcliente = isset($_GET['idcliente']) ? $_GET['idcliente'] : '';
+$nomecliente = isset($_GET['nomecliente']) ? $_GET['nomecliente'] : '';
+$idvenda = isset($_GET['idvenda']) ? $_GET['idvenda'] : '';
+?>
 <div class="col-12">
   <div class="row">
     <div class="col-8">
@@ -12,7 +16,9 @@
     <div class="col-8">
       <div class="form-group">
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Selecionar cliente</button>
-        <strong style="display: inline-block">Cliente:</strong><p style="display: inline-block" name="cliente" id="labelCliente"></p>
+        <strong style="display: inline-block">Cliente:</strong>
+        <p style="display: inline-block" name="cliente" id="labelCliente">
+      </p>
       </div>
 
       <table class='table table-striped table-sm'>
@@ -40,6 +46,18 @@
 </div>
 <?php
 include "app/customers/modal.php";
+if ($idcliente){
+  ?>
+  <script>
+    window.onload = function () {
+      select_cliente(<?php echo $idcliente?>, '<?php echo $nomecliente?>');
+      select_venda(<?php echo $idvenda; ?>);
+
+      } 
+    
+</script>
+  <?php
+}
 ?>
 <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/dbfunctions.js"></script> -->

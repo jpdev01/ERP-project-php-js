@@ -1,9 +1,17 @@
 
 <div class="col-12" id='div-products'>
   <div class="row">
-      <h2>Vendas condicionais ou delivery</h2>
+    <div class="col-5">
+      <h5>Vendas condicionais ou delivery</h5>
+</div>
+<div class="col-4">
+<?php 
+      $placeholder = "Pesquisar por detalhes";
+      include "modules/searchbar.php"; 
+      ?>
+</div>
   </div>
-  <div class="row">
+  <div class="row mt-2">
     <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <div class='table-responsive'>
         <table class="table table-striped table-sm table-hover">

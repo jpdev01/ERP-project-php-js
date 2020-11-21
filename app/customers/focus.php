@@ -81,7 +81,7 @@ $cliente = $stm_sql->fetch(PDO::FETCH_ASSOC);
     </div>
     <div class="col-6 pt-4">
       <p class="border-bottom"><strong>Informações de cadastro</strong></p>
-      <p><strong>Tamanho:</strong><?php echo $cliente['tam'];?> <strong> - Medida :</strong><?php echo $cliente['medida'];?> </p>
+      <p><strong>Tamanho: </strong><?php echo $cliente['tam'];?> <strong> - Medida: </strong><?php echo $cliente['medida'];?> </p>
       <p><strong>Data de registro:</strong><?php echo $cliente['dataRegistro'];?>  </p>
     </div>
     <div class="col-6 pt-4">

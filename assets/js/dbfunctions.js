@@ -108,7 +108,7 @@ function valDel(oque, qual){
     }
   }
 }
-function select_venda(id){//alteração de usuário, etc.
+function select_venda(id){
   jQuery.ajax({
     type: "POST",
     url: "app/payment/find-buy-select.php",

@@ -11,14 +11,21 @@ $venda = $stm_sql->fetch(PDO::FETCH_ASSOC);
 $data = date( 'd/m/Y h:m', strtotime($venda['data']));
 ?>
 
-<div class="card bg-light mb-3" style="max-width: 500px;">
+<div class="card bg-light w-100">
   <div class="card-header">Informações da venda:</div>
   <div class="card-body">
     <!-- <h5 class="card-title">Light card title</h5> -->
-    <p class="card-text">Data: <?php echo $data;?></p>
-    <p class="card-text">Valor total: R$ <?php echo $venda['vlrTotal'];?></p>
-    <p class="card-text">Cliente:<?php echo $venda['nomecliente'];?></p>
-    <p class="card-text">Desconto: R$ <?php echo $venda['dsc'];?></p>
+    <p class="card-text"><p class="font-weight-bold d-inline"> Data: </p><?php echo $data;?></p>
+    <p class="card-text"><p class="font-weight-bold d-inline">Valor total: </p>R$ <?php echo $venda['vlrTotal'];?></p>
+    <p class="card-text"><p class="font-weight-bold d-inline">Cliente: </p><?php echo $venda['nomecliente'];?></p>
+    <?php
+    if ($venda['dsc'] != 0){
+      ?>
+      <p class="card-text"><p class="font-weight-bold d-inline">Desconto: </p>R$<?php echo $venda['dsc'];?></p>
+      <?php
+    }
+    ?>
+    
     <?php
     if($venda['frmPgto']==0){
       $frmPgto='Dinheiro';
@@ -38,10 +45,10 @@ $data = date( 'd/m/Y h:m', strtotime($venda['data']));
       $qtdeParc = "";
     }else{
       $metPgto='Parcelado';
-      $qtdeParc = "----".$venda['qtdeParc']."x";
+      $qtdeParc = ", ".$venda['qtdeParc']."x";
     }
     ?>
-    <p class="card-text">Forma de pagamento: <?php echo $frmPgto."----"." ".$metPgto.$qtdeParc; ?></p>
-    <p class="card-text">Valor quitado: R$ <?php echo $venda['vlrPago'];?></p>
+    <p class="card-text"><p class="font-weight-bold d-inline">Forma de pagamento: </p><?php echo $frmPgto.", "." ".$metPgto.$qtdeParc; ?></p>
+    <p class="card-text"><p class="font-weight-bold d-inline">Valor quitado: </p>R$ <?php echo $venda['vlrPago'];?></p>
   </div>
 </div>

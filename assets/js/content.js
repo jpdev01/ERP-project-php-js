@@ -53,6 +53,7 @@ $("historic.php").ready(function(){
     url: "app/payment/find-buy.php",
     data: {
       cliente: nomecliente,
+      modal: 'true',
       pag: pag
     },
     success: function( data ){
@@ -89,3 +90,10 @@ function build(div, component, options){
     }
   });
 }
+
+function redirect(pag, args){
+    location.href = (pag + "&idcliente=" + args['idcliente'] + "&nomecliente=" + args['nomecliente'] + "&idvenda=" + args['idvenda']);
+}
+
+
+

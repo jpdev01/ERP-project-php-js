@@ -2,14 +2,20 @@
 <div class="col-12" id='div-products'>
   <div id="htmlModal"></div>
   <div class="row">
-    <div class="col-8">
+    <div class="col-3">
       <h2>Vendas</h2>
+    </div>
+    <div class="col-8">
+      <?php 
+      $placeholder = "Pesquisar por detalhes";
+      include "modules/searchbar.php"; 
+      ?>
     </div>
   </div>
   <div class="row container">
       <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
         <div class='table-responsive'>
-          <table class="table table-striped table-sm">
+          <table class="table table-striped table-sm" id='employee_table'>
             <thead class="thead-dark">
               <tr>
                 <th>Data da venda</th>

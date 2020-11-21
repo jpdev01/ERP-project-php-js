@@ -1,10 +1,10 @@
 <?php
 $id = isset($_POST['content']) ? $_POST['content'] : '';
 if($id){
-  if($id['categoryid']){
+  if (isset($id['categoryid'])){
     $filter = "category";
     $id = $id['categoryid'];
-  }else if($id['providerid']){
+  }else if (isset($id['providerid'])){
     $filter = "provider";
     $id = $id['providerid'];
   }

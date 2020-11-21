@@ -1,5 +1,7 @@
+<!--
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
+-->
 
 <?php
 $id = isset($_POST['id']) ? $_POST['id'] : $_GET['id'];
@@ -18,7 +20,6 @@ $stm_sql-> execute();
 
 $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
 //var_dump($user['email']);
-
 
 
 
@@ -47,6 +48,7 @@ $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
 
 
 <!-- <div class="container"> -->
+  <div id="htmlModal"></div>
 <div class="col-12 container">
   <div class="row">
     <div class="col-8">
@@ -54,9 +56,6 @@ $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
     </div>
   </div>
   <div class="row pt-4">
-
-
-    <div class="col-8">
       <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <input id="cliente" value="<?php echo $cliente['nome']; ?>" hidden>
       <input id="pag" value="customers" hidden>
@@ -80,12 +79,12 @@ $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
           </tbody>
         </table>
     </div>
-    </div>
+    <!--
     <div class="col-4">
       <div id="content2">
       </div>
     </div>
-
+-->
   </div>
 </div>
 <script type="text/javascript" src="assets/js/scroll.js"></script>
