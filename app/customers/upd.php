@@ -51,7 +51,7 @@ $msg = "";
     $stm_sql-> bindParam(':end', $endereco);
     $stm_sql-> bindParam(':dataRegistro', $dataRegistro);
     $stm_sql-> bindParam(':dsc', $dsc);
-    $stm_sql-> bindParam(':medida', $nmedida);
+    $stm_sql-> bindParam(':medida', $medida);
     $stm_sql-> bindParam(':tam', $tam);
     $stm_sql-> bindParam(':refer', $refer);
     $stm_sql-> bindParam(':filiacao', $filiacao);

@@ -39,18 +39,33 @@
        <div class="form-group col-md-1">
          <label for="tam">Tamanho:</label>
          <select id="tam" name="tam" class="form-control" value="<?php echo $cliente['tam'];?>">
-           <option value=''>tamanho...</option>
-           <option value="P">P</option>
-           <option value="P">M</option>
-           <option value="P">G</option>
+         <option value=''>tamanho...</option>
+         <?php
+          $tamanhos = ['P', 'M', 'G', 'GG', 'XG'];
+          foreach ($tamanhos as $tamanho) {
+            if ($cliente['tam'] == $tamanho){
+              ?>
+            <option value="<?php echo $tamanho; ?>" selected><?php echo $tamanho; ?></option>
+              <?php
+            }else{
+              ?>
+              <option value="<?php echo $tamanho; ?>"><?php echo $tamanho; ?></option>
+              <?php
+            }
+            
+        }
+         ?>
          </select>
        </div>
        <div class="form-group col-md-1">
          <label for="medida">Medida:</label>
-         <select id="medida" name="medida" class="form-control" value="<?php echo $cliente['medida'];?>">
+         <select id="medida" name="medida" class="form-control">
            <option value=''>medida...</option>
            <?php
            for($i=30 ; $i < 60; $i+=2){
+             if ($cliente['medida'] == $i){
+              echo "<option value='$i' selected>$i</option>";
+             }
              echo "<option value='$i'>$i</option>";
            }
            ?>

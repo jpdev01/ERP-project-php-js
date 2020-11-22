@@ -8,8 +8,8 @@
             <label for="check-status">Mostrar:</label>
             <select class="form-control" id="check-status">
               <option value="todos" selected>Todos</option>
-              <option value="Disponível">Em estoque</option>
-              <option value="Indisponível">Indisponíveis</option>
+              <option value="disponíveis">Em estoque</option>
+              <option value="indisponíveis">Indisponíveis</option>
             </select>
           </div>
           <!-- <div class="form-group">

@@ -68,25 +68,9 @@ $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
       <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <input id="cliente" value="<?php echo $cliente['nome']; ?>" hidden>
       <input id="pag" value="customers" hidden>
-        <table class='table table-striped table-sm h'>
-          <thead class='thead-dark'>
-            <tr>
-              <th scope="col">Data</th>
-              <th scope="col">Valor total</th>
-              <th scope="col">Parcelas</th>
-              <th scope="col">Desconto</th>
-              <th scope="col">Valor pago</th>
-              <th scope="col">
-                <div class="custom-control custom-checkbox custom-select-sm">
-                  <input type="checkbox" class="custom-control-input bd-danger" id="check-sell-pendente">
-                  <label class="custom-control-label" for="check-sell-pendente">Pendente</label>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody id='pend-cliente'>
-          </tbody>
-        </table>
+      <div id="pend-cliente">
+      </div>
+        
     </div>
     <!--
     <div class="col-4">

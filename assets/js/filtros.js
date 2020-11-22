@@ -12,9 +12,8 @@ function load_dados(valores, page, div){
     //       loading_show();
     // },
     data: valores,
-    success: function(msg){
+    success: function(data){
       // loading_hide();
-      var data = msg;
       $(div).html(data).fadeIn();
     }
   });
@@ -29,35 +28,35 @@ $(document).ready(function(){
   });
 
   $('#check-status').change(function(){
-    /*
-    pathFolder = $("#pathFilter").val();
-    pathFolder = pathFolder.split(";");
-    if (pathFolder[0]="filter=category"){
-      category = pathFolder[1].split("=");
-      category = category[1];
-      provider = '';
-    }else if (pathFolder[0]="filter=provider"){
-      provider = pathFolder[1].split("=");
-      provider = provider[1];
-      provider = '';
-    }
-    provider = $("#provider").val();
+    alert("change");
+    //pathFolder = $("#pathFilter").val();
+    //pathFolder = pathFolder.split(";");
+    //if (pathFolder[0]="filter=category"){
+    //  category = pathFolder[1].split("=");
+    //  category = category[1];
+    //  provider = '';
+    //}
+    //else if (pathFolder[0]="filter=provider"){
+    //  provider = pathFolder[1].split("=");
+    //  provider = provider[1];
+    //  provider = '';
+    //}
+    //provider = $("#provider").val();
     status = $('#check-status').val();
-    
     valores = {
-      status: status,
-      categoryid: category,
-      providerid: provider
+      status: status
+      //,
+      //categoryid: category,
+      //providerid: provider
     };
-    */
 
-    // if($("#check-status").is(':checked')){
-    //   valores ={status : 0};
-    // }
-    // else{
-    //   valores ={status : 'todos'};
-    // }
-    //load_dados(valores, 'app/products/pesquisa.php', '#content2');
+     //if($("#check-status").is(':checked')){
+     //  valores ={status : 0};
+     //}
+     //else{
+      // valores ={status : 'todos'};
+     //}
+    load_dados(valores, 'app/products/pesquisa.php', '#content2');
   });
   // $('#check-status-catg').change(function(){
   //   alert('oi');
