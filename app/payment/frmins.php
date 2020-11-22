@@ -50,11 +50,13 @@ if ($idcliente){
   ?>
   <script>
     window.onload = function () {
-      select_cliente(<?php echo $idcliente?>, '<?php echo $nomecliente?>');
+      setTimeout(function(){ 
+        select_cliente(<?php echo $idcliente?>, '<?php echo $nomecliente?>');
       select_venda(<?php echo $idvenda; ?>);
-
+      
+      }, 500);
+      
       } 
-    
 </script>
   <?php
 }

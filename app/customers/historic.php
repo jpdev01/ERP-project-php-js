@@ -51,8 +51,17 @@ $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
   <div id="htmlModal"></div>
 <div class="col-12 container">
   <div class="row">
-    <div class="col-8">
+    <div class="col-6">
       <h5 class=""><img src='assets/css/bootstrap-icons-1.0.0/person-fill.svg' width='50' height='50' >Cliente: <?php echo $cliente['nome'];?></h5>
+    </div>
+    <div class='col-2'>
+    <div class="form-group">
+      <label for="view">Visualizar</label>
+      <select id="view" class="custom-select custom-select-sm" onchange="changeSeeHis();">
+        <option value="list" selected>Lista</option>
+        <option value="icon">Ícones</option>
+      </select>
+    </div>
     </div>
   </div>
   <div class="row pt-4">

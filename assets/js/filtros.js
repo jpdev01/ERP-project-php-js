@@ -29,8 +29,6 @@ $(document).ready(function(){
   });
 
   $('#check-status').change(function(){
-    pathFolder = $("#check-status").val();
-    alert(pathFolder);
     /*
     pathFolder = $("#pathFilter").val();
     pathFolder = pathFolder.split(";");
@@ -52,8 +50,7 @@ $(document).ready(function(){
       providerid: provider
     };
     */
-   
-    search_table($("#check-status").val());
+
     // if($("#check-status").is(':checked')){
     //   valores ={status : 0};
     // }
@@ -83,7 +80,6 @@ $(document).ready(function(){
     } else {
       valores ={status : "todos", cliente: cliente, pag: pag, modal: "true"};
     }
-    
     load_dados(valores, 'app/payment/find-buy.php', '#pend-cliente');
   }
   $('#add-product').click(function(){
@@ -108,7 +104,11 @@ $(document).ready(function(){
   $('#add-category').click(function(){
     load_dados(null, 'app/categories/frmins.php', '#div-categories');
   });
+
+  
+
   function search_table(value){
+    
     $('#employee_table tbody tr').each(function(){
       var found = 'false';
       $(this).each(function(){

@@ -6,6 +6,11 @@ $msg="";
 $cliente = (!empty($_POST['cliente']))?$_POST['cliente']:null;
 $modal = (!empty($_POST['modal'])) ? $_POST['modal'] : null;
 $pag = (!empty($_POST['pag']))?$_POST['pag']:null;
+/*
+$idcliente = (isset($_POST['idcliente'])) ? $_POST['idcliente'] : '';
+$nomecliente = (isset($_POST['nomecliente'])) ? $_POST['nomecliente'] : '';
+$idvenda = (isset($_POST['idvenda'])) ? $_POST['idvenda'] : '';
+*/
 if($cliente==null){
   ?>
   <tr>
@@ -62,7 +67,7 @@ if($cliente==null){
             <?php
           }else{
             ?>
-            <td><input id="inputVenda<?php echo $compra['id'];?>" type='radio' name='radio-pgto-venda-selec' onchange="select_venda(<?php echo $compra['id'];?>)">Selecionar</td>
+            <td><input type='radio' name='radio-pgto-venda-selec' onchange="select_venda(<?php echo $compra['id'];?>)">Selecionar</td>
             <?php
           }
         }

@@ -1,4 +1,4 @@
-<script src="../../assets/js/filtros.js"></script>
+<!--<script src="../../assets/js/filtros.js"></script>-->
 <div class="container collapse" id="myFilters">
   <div class="container card card-block">
     <form id='frm-customers' class="m-md-4">

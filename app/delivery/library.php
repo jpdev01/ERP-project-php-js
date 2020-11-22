@@ -14,7 +14,7 @@
   <div class="row mt-2">
     <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <div class='table-responsive'>
-        <table class="table table-striped table-sm table-hover">
+        <table class="table table-striped table-md table-hover">
           <thead class="thead-dark">
             <tr>
               <th>Data</th>

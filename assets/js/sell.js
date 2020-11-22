@@ -235,6 +235,5 @@ function select_cliente(id, cliente){
     }
   });
 
-  return false;
   // $('#exampleModal').modal('hide');
 }

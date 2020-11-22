@@ -46,21 +46,7 @@ $(document).ready(function(){
   });
 });
 $("historic.php").ready(function(){
-  nomecliente = $('#cliente').val();
-  pag = $('#pag').val();
-  jQuery.ajax({
-    type: "POST",
-    url: "app/payment/find-buy.php",
-    data: {
-      cliente: nomecliente,
-      modal: 'true',
-      pag: pag
-    },
-    success: function( data ){
-      $("#pend-cliente").html(data);
-    }
-  });
-  return false;
+  viewCustomerHistory();
 });
 
 function query(data, callback, div){
@@ -95,5 +81,26 @@ function redirect(pag, args){
     location.href = (pag + "&idcliente=" + args['idcliente'] + "&nomecliente=" + args['nomecliente'] + "&idvenda=" + args['idvenda']);
 }
 
+function changeSeeHis(){
+  viewCustomerHistory();
+}
 
-
+function viewCustomerHistory(){
+  nomecliente = $('#cliente').val();
+  pag = $('#pag').val();
+  view = $('#view').val();
+  jQuery.ajax({
+    type: "POST",
+    url: "app/payment/find-buy.php",
+    data: {
+      cliente: nomecliente,
+      modal: 'true',
+      pag: pag,
+      view: view
+    },
+    success: function( data ){
+      $("#pend-cliente").html(data);
+    }
+  });
+  //return false;
+}
