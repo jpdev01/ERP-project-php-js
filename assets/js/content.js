@@ -46,6 +46,10 @@ $(document).ready(function(){
   });
 });
 $("historic.php").ready(function(){
+  //$('#pend-customer-grid').hide();
+  //$('#table').hide();
+  view = "list";
+  console.log("iniciando historic.php");
   viewCustomerHistory();
 });
 
@@ -55,7 +59,7 @@ function query(data, callback, div){
     url: "modules/requisitions-api.php",
     data: {data: data},
     success: function( data ){
-      alert(data);
+      
       if(callback){
         callback();
       }
@@ -86,9 +90,30 @@ function changeSeeHis(){
 }
 
 function viewCustomerHistory(){
+
   nomecliente = $('#cliente').val();
   pag = $('#pag').val();
   view = $('#view').val();
+  console.log("view = " + view);
+  if (view == "grid")
+  {
+    $('#table').hide();
+    $('#pend-customer-grid').show();
+    div = "#pend-customer-grid";
+  }
+  else if (view == "list")
+  {
+    $('#table').show();
+    $('#pend-customer-grid').hide();
+    div = "#pend-customer-table";
+  }
+  else
+  {
+    $('#table').show();
+    $('#pend-customer-grid').hide();
+    div = "#pend-customer-table";
+  }
+  
   jQuery.ajax({
     type: "POST",
     url: "app/payment/find-buy.php",
@@ -98,8 +123,9 @@ function viewCustomerHistory(){
       pag: pag,
       view: view
     },
-    success: function( data ){
-      $("#pend-cliente").html(data);
+    success: function( data )
+    {
+      $(div).html(data);
     }
   });
   //return false;

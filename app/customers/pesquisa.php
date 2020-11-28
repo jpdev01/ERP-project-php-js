@@ -18,6 +18,12 @@ if( $min ){ $cintura[] = " `medida` >= '{$min}'"; }
 if( $max ){ $cintura[] = " `medida` <= '{$max}'"; }
 
 $order = (isset($_POST['order']) ? $_POST['order'] : 0);
+$advancedFilter = (isset($_POST['advancedFilter']) ? $_POST['advancedFilter'] : '');
+if ($advancedFilter == "birthdays"){
+  $dataAtual = date("Y-m-d");
+  $advancedFilter = ' dataNascimento = '.$dataAtual;
+}
+
 $msg = "";
 //começamos a concatenar nossa tabela
 
@@ -25,7 +31,7 @@ $msg = "";
 //requerimos a classe de conexão
 include '../../security/database/connection.php';
 $sql = "SELECT * FROM clientes";
-if ( sizeof( $tamanho ) || sizeof( $cintura ) ){
+if ( sizeof( $tamanho ) || sizeof( $cintura ) || ( $advancedFilter )){
   $sql.= ' WHERE ';
 }
 if( sizeof( $tamanho ) ){
@@ -37,6 +43,9 @@ if ( sizeof( $tamanho ) && sizeof( $cintura ) ){
 if( sizeof( $cintura ) ){
   $sql .= implode( ' AND ',$cintura );
 }
+if( $advancedFilter ){
+  $sql .= $advancedFilter;
+}
 if( $order==0 ){
   $sql .= " ORDER BY nome ASC";
 }else if($order==1){
@@ -47,7 +56,7 @@ $stm_sql = $db_connection->prepare($sql);
 $stm_sql -> execute();
 
 $users = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
-
+echo $sql;
 foreach($users as $user){
   ?>
   <tr onclick="conteudo('#content', 'customers', 'focus', '<?php echo $user['id']; ?>', 'null')">

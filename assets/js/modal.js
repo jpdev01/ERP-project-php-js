@@ -1,4 +1,5 @@
 function openModal(diretory, content, filtro, options){
+
   jQuery.ajax({
     type: "POST",
     url: diretory,
@@ -18,15 +19,20 @@ function openModal(diretory, content, filtro, options){
           content: content,
           html: html,
           options: options,
-          filtro: filtro
+          filtro: filtro,
         }
       }).then(function(htmlModal){
         const content = new Promise((resolve, reject) => {
-          $("#htmlModal").html(htmlModal);
+          if (options.htmlModal){
+            $(options.htmlModal).html(htmlModal);
+          }
+          
           resolve();
         })
         content.then(res => {
-          document.getElementById("btnModal").click();
+          if (options.button){
+            document.getElementById(options.button).click();
+          }
         })
       });
     });

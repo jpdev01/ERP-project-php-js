@@ -52,7 +52,7 @@
               </div></th>
             </tr>
           </thead>
-          <tbody id='pend-cliente'>
+          <tbody id='pend-customer-table'>
           </tbody>
         </table>
       </div>
@@ -80,7 +80,7 @@ $(function () {
         url: "app/payment/find-buy.php",
         data: dados,
         success: function( data ){
-          $("#pend-cliente").html(data);
+          $("#pend-customer-table").html(data);
         }
       });
 

@@ -43,7 +43,8 @@
             $providers = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
             foreach ($providers as $provider) { //para cada linha, crie uma variavel user
             ?>
-              <tr onclick="openModal('app/products/pesquisa.php', {providerid: '<?php echo $provider['id']; ?>'}, 'todos', {titulo: 'Produtos do Fornecedor <?php echo $provider['nome']; ?>', searchbar: 'true', filter: 'true', tamanho: 'lg'})">
+              <tr onclick="openModal('app/products/pesquisa.php', {providerid: '<?php echo $provider['id']; ?>'}, 'todos', {titulo: 'Produtos do Fornecedor <?php echo $provider['nome']; ?>', searchbar: 'true', filter: 'true', tamanho: 'lg', 
+              htmlModal: '#htmlModal', button: 'btnModal'})">
                 <td><?php echo $provider['id']; ?></td>
                 <td><?php echo $provider['nome']; ?></td>
                 <td name="nome"><?php echo $provider['dsc']; ?></td>

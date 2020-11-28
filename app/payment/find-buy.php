@@ -6,37 +6,19 @@ $msg="";
 $cliente = (!empty($_POST['cliente']))?$_POST['cliente']:null;
 $modal = (!empty($_POST['modal'])) ? $_POST['modal'] : null;
 $pag = (!empty($_POST['pag']))?$_POST['pag']:null;
+$view = (isset($_POST['view'])) ? $_POST['view'] : 'list';
 /*
 $idcliente = (isset($_POST['idcliente'])) ? $_POST['idcliente'] : '';
 $nomecliente = (isset($_POST['nomecliente'])) ? $_POST['nomecliente'] : '';
 $idvenda = (isset($_POST['idvenda'])) ? $_POST['idvenda'] : '';
 */
-?>
-<table class='table table-striped table-sm h'>
-          <thead class='thead-dark'>
-            <tr>
-              <th scope="col">Data</th>
-              <th scope="col">Valor total</th>
-              <th scope="col">Parcelas</th>
-              <th scope="col">Desconto</th>
-              <th scope="col">Valor pago</th>
-              <th scope="col">
-                <div class="custom-control custom-checkbox custom-select-sm">
-                  <input type="checkbox" class="custom-control-input bd-danger" id="check-sell-pendente">
-                  <label class="custom-control-label" for="check-sell-pendente">Pendente</label>
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-          <?php
-if($cliente==null){
+
+if($cliente == null){
   ?>
-  <tr>
-    <td colspan='3'>Nenhum cliente ou compra encontrada!</td>
-  </tr>
+    Nenhum cliente ou compra encontrada!
   <?php
-}else{
+}else
+{
   $sql = "SELECT v.*, c.nome AS nomecliente FROM vendas v INNER JOIN clientes c ON v.clientes_id = c.id AND c.nome=:cliente";
   if ($status=="pendente"){
     $sql.= ' AND v.vlrPago<>v.vlrTotal';
@@ -46,59 +28,28 @@ if($cliente==null){
   $stm_sql-> execute();
   $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
 
-  ?>
   
-          
-        <?php
-  foreach ($compras as $compra) {
-    if ($pag=="customers"){
-      if($modal=="true"){
-        ?>
-        <tr onclick="openModal('app/sell/focus.php', {vendaid: '<?php echo $compra['id'];?>'}, '', {titulo: 'Descrição da Venda', searchbar: 'false', filter: 'false', tamanho: 'md'})">
-        <?php
+
+    if ($view == "list")
+    {
+      foreach ($compras as $key => $compra) {
+        $compra['data'] = date('d/m/Y h:m', strtotime($compra['data']));
+        include "find-buy-list.php";
       }
-      else{
-        ?>
-        <tr onclick="conteudo('#content2', 'sell', 'focus', '<?php echo $compra['id'];?>', '')">
+      
+    }
+    else if ($view == "grid")
+    {
+      ?>
+      <div class="row row-cols-1 row-cols-md-2">
         <?php
+      foreach ($compras as $key => $compra) {
+        $compra['data'] = date('d/m/Y h:m', strtotime($compra['data']));
+        include "find-buy-grid.php";
       }
-      }
-      else{
-        ?>
-        <tr>
-          <?php
-        }
-        ?>
-        <td><?php echo date('d/m/Y h:m', strtotime($compra['data']));?></td>
-        <td>R$<?php echo $compra['vlrTotal'];?></td>
-        <td><?php echo $compra['qtdeParc'];?>x</td>
-        <td>R$ <?php echo $compra['dsc'];?></td>
-        <td>R$ <?php echo $compra['vlrPago'];?></td>
-        <?php
-        if($compra['vlrPago'] == $compra['vlrTotal']){
-          ?>
-          <td>Pago</td>
-          <?php
-        }else{
-          if ($pag == "customers") {
-            ?>
-            <td onclick="redirect('main.php?folder=app/payment/&file=frmins.php', {
-              idcliente: '<?php echo $compra['clientes_id']; ?>', 
-              nomecliente: '<?php echo $compra['nomecliente']; ?>',
-              idvenda: '<?php echo $compra['id']; ?>'
-              })"><input type='radio' name='radio-pgto-venda-selec'>Selecionar</td>
-            <?php
-          }else{
-            ?>
-            <td><input type='radio' name='radio-pgto-venda-selec' onchange="select_venda(<?php echo $compra['id'];?>)">Selecionar</td>
-            <?php
-          }
-        }
-        ?>
-      </tr>
+      ?>
+      </div>
       <?php
     }
   }
-  ?>
-</tbody>
-        </table>
+?>

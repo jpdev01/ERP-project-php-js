@@ -118,6 +118,37 @@ include "security/database/connection.php";
                 <a class="nav-link" href="main.php?folder=app/delivery/&file=library.php">Vendas condicionais</a>
               </nav>
             </div>
+
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMore" aria-expanded="false" aria-controls="collapseMore">
+              <div class="sb-nav-link-icon">
+
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                </svg>
+
+              </div>
+              Mais
+              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseMore" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" onclick="openModal('app/customers/birthdays.php', 
+              { 
+              advancedFilter: 'birthdays'
+              }, 
+              'todos', 
+              {
+                callback: '', 
+              tamanho: 'sm', 
+              titulo: 'Aniversariantes de hj', 
+              searchbar: 'false', 
+              filter: 'false', 
+              htmlModal: '#html-modal-main',
+              button: 'btnModal',
+              })">Aniversariantes</a>
+                
+              </nav>
+            </div>
             <?php
             if ($_SESSION['permission']=="adm"){
             ?>
@@ -145,8 +176,10 @@ include "security/database/connection.php";
               </div>
               Usuários
             </a>
+            
             <?php
 }
+
              ?>
           </div>
         </div>
@@ -159,6 +192,7 @@ include "security/database/connection.php";
     <?php
 
     ?>
+    <div id="html-modal-main"></div>
     <div id="layoutSidenav_content" class="mt-4">
       <main class="container-fluid">
         <div id="content">

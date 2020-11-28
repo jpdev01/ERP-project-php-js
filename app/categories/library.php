@@ -45,7 +45,20 @@
             foreach($categories as $category){//para cada linha, crie uma variavel user
               ?>
 
-              <tr onclick="openModal('app/products/pesquisa.php', { categoryid: '<?php echo $category['id']; ?>'}, 'todos', {callback: '', tamanho: 'xl', titulo: 'Produtos da categoria <?php echo $category['nome']; ?>', searchbar: 'true', filter: 'true'})">
+              <tr onclick="openModal('app/products/pesquisa.php', 
+              { 
+              categoryid: '<?php echo $category['id']; ?>'
+              }, 
+              'todos', 
+              {
+                callback: '', 
+              tamanho: 'xl', 
+              titulo: 'Produtos da categoria <?php echo $category['nome']; ?>', 
+              searchbar: 'true', 
+              filter: 'true', 
+              htmlModal: '#htmlModal',
+              button: 'btnModal'
+              })">
                 <td><?php echo $category['id']; ?></td>
                 <td><?php echo $category['nome'];?></td>
                 <td name="nome"><?php echo $category['dsc'];?></td>

@@ -229,9 +229,9 @@ function select_cliente(id, cliente){
   jQuery.ajax({
     type: "POST",
     url: "app/payment/find-buy.php",
-    data: {cliente: cliente},
+    data: {cliente: cliente, view: 'list'},
     success: function( data ){
-      $("#pend-cliente").html(data);
+      $("#pend-customer-table").html(data);
     }
   });
 

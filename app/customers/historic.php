@@ -59,7 +59,7 @@ $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
       <label for="view">Visualizar</label>
       <select id="view" class="custom-select custom-select-sm" onchange="changeSeeHis();">
         <option value="list" selected>Lista</option>
-        <option value="icon">Ícones</option>
+        <option value="grid">Ícones</option>
       </select>
     </div>
     </div>
@@ -68,8 +68,13 @@ $compras = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
       <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <input id="cliente" value="<?php echo $cliente['nome']; ?>" hidden>
       <input id="pag" value="customers" hidden>
-      <div id="pend-cliente">
+      <?php
+        include "app/payment/find-buy-table.php";
+      ?>
+      <div id="pend-customer-grid">
+      
       </div>
+      
         
     </div>
     <!--

@@ -2,6 +2,7 @@
 $idcliente = isset($_GET['idcliente']) ? $_GET['idcliente'] : '';
 $nomecliente = isset($_GET['nomecliente']) ? $_GET['nomecliente'] : '';
 $idvenda = isset($_GET['idvenda']) ? $_GET['idvenda'] : '';
+$view = isset($_GET['view']) ? $_GET['view'] : 'list';
 ?>
 <div class="col-12">
   <div class="row">
@@ -20,8 +21,9 @@ $idvenda = isset($_GET['idvenda']) ? $_GET['idvenda'] : '';
         <p style="display: inline-block" name="cliente" id="labelCliente">
       </p>
       </div>
+      <input id="view" value="list" hidden>
 
-      <table class='table table-striped table-sm'>
+      <table class='table table-striped table-sm' id="table">
         <thead class='thead-dark'>
           <tr>
             <th scope="col">Data</th>
@@ -35,9 +37,11 @@ $idvenda = isset($_GET['idvenda']) ? $_GET['idvenda'] : '';
             </div></th>
           </tr>
         </thead>
-        <tbody id='pend-cliente'>
+        <tbody id='pend-customer-table'>
         </tbody>
       </table>
+      <div id="pend-customer-grid">
+      </div>
     </div>
     <div class="col-4">
       <div id='venda-dados'></div>

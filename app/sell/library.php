@@ -37,7 +37,8 @@
                 $produtos = $venda['produtos'];
                 $produtos = unserialize ($produtos);
                 ?>
-                <tr onclick="openModal('app/sell/focus.php', {vendaid: '<?php echo $venda['id']; ?>'}, '', {titulo: 'Descrição da Compra', tamanho: 'md', searchbar: 'false', filter: 'false'})">
+                <tr onclick="openModal('app/sell/focus.php', {vendaid: '<?php echo $venda['id']; ?>'}, '', {titulo: 'Descrição da Compra', tamanho: 'md', searchbar: 'false', filter: 'false', 
+              htmlModal: '#htmlModal', button: 'btnModal'})">
                   <td position="sticky"><?php echo $venda['data']; ?></td>
                   <td><?php echo 'R$'.$venda['vlrTotal'];?></td>
                   <td>

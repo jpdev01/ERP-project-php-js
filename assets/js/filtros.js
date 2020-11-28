@@ -12,8 +12,9 @@ function load_dados(valores, page, div){
     //       loading_show();
     // },
     data: valores,
-    success: function(data){
+    success: function(msg){
       // loading_hide();
+      var data = msg;
       $(div).html(data).fadeIn();
     }
   });
@@ -28,35 +29,35 @@ $(document).ready(function(){
   });
 
   $('#check-status').change(function(){
-    alert("change");
-    //pathFolder = $("#pathFilter").val();
-    //pathFolder = pathFolder.split(";");
-    //if (pathFolder[0]="filter=category"){
-    //  category = pathFolder[1].split("=");
-    //  category = category[1];
-    //  provider = '';
-    //}
-    //else if (pathFolder[0]="filter=provider"){
-    //  provider = pathFolder[1].split("=");
-    //  provider = provider[1];
-    //  provider = '';
-    //}
-    //provider = $("#provider").val();
+    /*
+    pathFolder = $("#pathFilter").val();
+    pathFolder = pathFolder.split(";");
+    if (pathFolder[0]="filter=category"){
+      category = pathFolder[1].split("=");
+      category = category[1];
+      provider = '';
+    }else if (pathFolder[0]="filter=provider"){
+      provider = pathFolder[1].split("=");
+      provider = provider[1];
+      provider = '';
+    }
+    provider = $("#provider").val();
     status = $('#check-status').val();
+    
     valores = {
-      status: status
-      //,
-      //categoryid: category,
-      //providerid: provider
+      status: status,
+      categoryid: category,
+      providerid: provider
     };
+    */
 
-     //if($("#check-status").is(':checked')){
-     //  valores ={status : 0};
-     //}
-     //else{
-      // valores ={status : 'todos'};
-     //}
-    load_dados(valores, 'app/products/pesquisa.php', '#content2');
+    // if($("#check-status").is(':checked')){
+    //   valores ={status : 0};
+    // }
+    // else{
+    //   valores ={status : 'todos'};
+    // }
+    //load_dados(valores, 'app/products/pesquisa.php', '#content2');
   });
   // $('#check-status-catg').change(function(){
   //   alert('oi');
@@ -69,6 +70,7 @@ $(document).ready(function(){
   });
 
   function see_customer_historic(){
+    console.log("see_customer_historic");
     var cliente = $('#labelCliente').text();
     if (!cliente){
       var cliente = $('#cliente').val();
@@ -79,7 +81,7 @@ $(document).ready(function(){
     } else {
       valores ={status : "todos", cliente: cliente, pag: pag, modal: "true"};
     }
-    load_dados(valores, 'app/payment/find-buy.php', '#pend-cliente');
+    load_dados(valores, 'app/payment/find-buy.php', '#pend-customer-table');
   }
   $('#add-product').click(function(){
     load_dados(null, 'app/products/frmins.php', '#div-products');
