@@ -18,10 +18,12 @@ if(!isset($_SESSION['idsessao'])||($_SESSION['idsessao']!= session_id())){
   //$pag = $_SERVER['PHP_SELF'];
   $pag = $_SERVER["REQUEST_URI"];
 
-  if ($user['permissao']==0){
+  if ($user['permissao'] == 0){
     foreach ($arr_adm as $pagAdm) {
       if (strpos($pag, $pagAdm) == true){
-        lockPermission("accessDenied.html");
+        // erro de permissão
+        header("Location: main.php?file=accessDenied.html");
+        // lockPermission("main.php?file=accessDenied.html");
       }
     }
   }

@@ -33,6 +33,7 @@ $idcliente = isset($_POST['cliente']) ? $_POST['cliente'] : null;
 $codes = isset($_COOKIE['codes']) ? $_COOKIE['codes'] : null;
 $qtdes = isset($_COOKIE['qtdes']) ? $_COOKIE['qtdes'] : array();
 $nomeCliente = isset($_POST['nomeCliente']) ? $_POST['nomeCliente'] : "";
+$nomeCliente = isset($_POST['flag']) ? $_POST['flag'] : null;
 
 // $condicional=0;
 
@@ -47,7 +48,7 @@ if ($metPgto==0){//avista
 // $cliente_table = $stm_sql->fetch(PDO::FETCH_ASSOC);
 // $idcliente = $cliente_table['id'];
 // $nomecliente = $cliente_table['nome'];
-$sql = "INSERT INTO vendas (id, vlrTotal, data, dsc, metPgto, frmPgto, vlrPago, qtdeParc, clientes_id, produtos, usuarios_id) VALUES (:id, :vlrTotal, :data, :dsc, :metPgto, :frmPgto, :vlrPago, :qtdeParc, :cliente, :produtos, :iduser)";
+$sql = "INSERT INTO vendas (id, vlrTotal, data, dsc, metPgto, frmPgto, vlrPago, qtdeParc, clientes_id, produtos, usuarios_id, bandeira) VALUES (:id, :vlrTotal, :data, :dsc, :metPgto, :frmPgto, :vlrPago, :qtdeParc, :cliente, :produtos, :iduser, :bandeira)";
 $stm_sql = $db_connection-> prepare ($sql);
 
 $id = null;
@@ -62,6 +63,7 @@ $stm_sql-> bindParam(':qtdeParc', $qtdeParc);
 $stm_sql-> bindParam(':cliente', $idcliente);
 $stm_sql-> bindParam(':produtos', $codes);
 $stm_sql-> bindParam(':iduser', $iduser);
+$stm_sql-> bindParam(':bandeira', $flag);
 // $stm_sql-> bindParam(':condicional', $condicional);
 
 $result = $stm_sql->execute();

@@ -1,5 +1,7 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script> -->
 <?php
+$inputGroupSize = "input-group-sm";
+$flags = ['Mastercard', 'Visa', 'Elo', 'Hipercard', 'American Express', 'Diners Club International', 'Hiper', 'Rede Shop', 'Maestro', 'Cabal'];
 include "../../security/database/connection.php";
 $codes = (isset($_COOKIE['codes'])) ? $_COOKIE['codes']: array();
 $id_delivery   = isset($_POST['delivery']) ? $_POST['delivery'] : null;
@@ -51,11 +53,11 @@ if($id_delivery!=""){
           <input type="text" name="scannercode" id="code" class="form-control" placeholder="Código de barras do produto...">
           <div class="input-group-prepend">
             <div class="input-group-text bg-light">
-              <input type="radio" class='box-mode' id="box-scannercode" value="0" name="mode_code" checked>
+              <input type="radio" class='box-mode mr-2' id="box-scannercode" value="0" name="mode_code" checked>
               <img src="assets/css/bootstrap-icons-1.0.0/upc-scan.svg" alt="" width="18" height="18" title="usar leitor">
             </div>
             <div class="input-group-text bg-light">
-              <input type="radio" value="1" class='box-mode' name="mode_code">
+              <input type="radio" value="1" class='box-mode mr-2' name="mode_code">
               <img src="assets/css/bootstrap-icons-1.0.0/keyboard.svg" alt="" width="18" height="18" title="usar teclado">
             </div>
           </div>
@@ -108,18 +110,19 @@ if($id_delivery!=""){
         </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6 venda">
+          <div class="form-group col-md-6 venda <?php echo $inputGroupSize; ?>">
             <label for="frmpgto">Forma de Pagamento:</label>
-            <select class="form-control" id="frmpgto" name="frmpgto" required>
+            <select class="form-control" id="frmpgto" name="frmpgto" onchange="change_frmpgto();" required>
               <option value="0">Dinheiro</option>
               <option value="1">Cartão de crédito</option>
               <option value="2">Cartão de débito</option>
               <option value="3">Cheque</option>
               <option value="4">Crediário</option>
               <option value="5">Depósito / transferência</option>
+              <option value="6">PIX</option>
             </select>
           </div>
-          <div class="form-group col-6 venda">
+          <div class="form-group col-6 venda <?php echo $inputGroupSize; ?>">
             <label for="metPgto">Método de Pagamento:</label>
             <select class="form-control" id="metPgto" name="metPgto" required>
               <option value="0">A vista</option>
@@ -138,22 +141,35 @@ if($id_delivery!=""){
     </div>
   </div> -->
   <div class="form-row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-5 <?php echo $inputGroupSize; ?>">
       <label for="date">Data:</label>
       <input type="datetime-local" name="date" id="date" class="form-control" value="<?php date_default_timezone_set('America/Sao_Paulo');
       echo Date('Y-m-d\TH:i',time()); ?>">
     </div>
-    <div class="form-group col-md-4" id='cmp_parc'>
+    <div class="form-group col-md-3 <?php echo $inputGroupSize; ?>" id='cmp_parc'>
       <label for="qtdeparc">Qdte de Parcelas:</label>
       <input type="number" name="qtdeparc" id="qtdeparc" placeholder="qtde de parcelas..." value="" min="1" max="12" class="form-control">
     </div>
-    <div class="form-group col-md-4" id='cmp_entrada'>
+    <div class="form-group col-md-4 <?php echo $inputGroupSize; ?>" id='cmp_entrada'>
       <label for="entrada">Valor de entrada:</label>
       <input type="number" name="entrada" id="entrada" placeholder="valor pago" value="" class="form-control">
     </div>
+    <div class="form-group col-md-4 <?php echo $inputGroupSize; ?>" id="flagField">
+            <label for="flag">bandeira:</label>
+            <select class="form-control form-control-sm" id="flag" name="flag" required>
+              <option value=''>Selecione</option>
+              <?php
+              foreach ($flags as $key => $flag) {
+                echo "<option value='".$key."'>".$flag."</option>";
+            }
+            ?>
+            </select>
+          </div>
+    
   </div>
+  <button type="button" class="btn btn-outline-light btn-sm" id="btn_view_parcels">Visualizar parcelas</button>
   <div class="form-row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-4 <?php echo $inputGroupSize; ?>">
       <div class="form-check venda">
         <input class="form-check-input" type="checkbox" id="descCheck">
         <label class="form-check-label" for="descCheck">Aplicar desconto</label>
@@ -163,7 +179,7 @@ if($id_delivery!=""){
         <label class="form-check-label" for="CondCheck">Venda Condicional</label>
       </div>
     </div>
-    <div class="form-group col-md-4" id='cmp_desc'>
+    <div class="form-group col-md-4 <?php echo $inputGroupSize; ?>" id='cmp_desc'>
       <label for="desc">Desconto:</label>
       <input type="number" name="desc" id="desc" value="0" placeholder="Insira o valor de desconto" class="form-control">
     </div>
@@ -171,8 +187,8 @@ if($id_delivery!=""){
       <label id='varfinal' class='venda'></label>
     </div>
   </div>
-  <button type="reset" id="e_compra" class="btn btn-danger">Cancelar</button>
-  <button type="submit" class="btn btn-success">Confirmar</button>
+  <button type="reset" id="e_compra" class="btn btn-danger btn-sm">Cancelar</button>
+  <button type="submit" class="btn btn-success btn-sm">Confirmar</button>
 </form>
 </div>
 </div>

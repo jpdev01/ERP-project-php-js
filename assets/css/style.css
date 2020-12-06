@@ -93,3 +93,11 @@ table.tableBodyScroll thead, table.tableBodyScroll tbody tr {
 p{
   display: inline-block;
 } */
+
+table{
+  font-size: 12px;
+}
+
+html {
+  font-family: sans-serif;
+}

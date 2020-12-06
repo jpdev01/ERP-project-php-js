@@ -1,6 +1,7 @@
 <?php
 include "security/authentication/validation.php";
 include "security/database/connection.php";
+date_default_timezone_set('UTC');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,6 +21,7 @@ include "security/database/connection.php";
 </head>
 <!-- js bootstrap -->
 <script src="assets/framework/jquery/jquery-3.5.1.min.js"></script>
+<script src="assets/js/bootstrap.js"></script>
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -32,8 +34,9 @@ include "security/database/connection.php";
 <body class="sb-nav-fixed">
 
 
-  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="main.php">Neusa Moda</a>
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 8%;">
+    <a class="navbar-brand" href="main.php" style="font-size: 20px;">Neusa Moda</a>
+    <div id="alert" class="" style="position: absolute; display: none;"></div>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
     <!-- <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -45,10 +48,10 @@ include "security/database/connection.php";
       </div>
     </form> -->
     <!-- Navbar-->
-    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-    <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown bg-dark">
-        <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" style="position: relative;">
+    <ul class="navbar-nav ml-auto ml-md-0 position-relative">
+      <li class="nav-item dropdown bg-dark position-relative">
+        <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw" style="position: relative;"></i></a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <!-- <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a> -->
@@ -65,7 +68,7 @@ include "security/database/connection.php";
         <div class="sb-sidenav-menu">
           <div class="nav">
             <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-            <a class="nav-link" href="main.php?folder=app/sell/&file=frmins.php">
+            <a class="nav-link mr-sm-0" href="main.php?folder=app/sell/&file=frmins.php">
               <div class="sb-nav-link-icon">
 
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -75,7 +78,7 @@ include "security/database/connection.php";
               </div>
               Vender
             </a>
-            <a class="nav-link" href="main.php?folder=app/teller/&file=frmins.php">
+            <a class="nav-link my-sm-0" href="main.php?folder=app/teller/&file=frmins.php">
               <div class="sb-nav-link-icon">
 
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-inbox-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -139,8 +142,8 @@ include "security/database/connection.php";
               'todos', 
               {
                 callback: '', 
-              tamanho: 'sm', 
-              titulo: 'Aniversariantes de hj', 
+              tamanho: 'md', 
+              titulo: 'Aniversariantes de <?php echo date('d/m/Y'); ?>', 
               searchbar: 'false', 
               filter: 'false', 
               htmlModal: '#html-modal-main',
@@ -197,11 +200,15 @@ include "security/database/connection.php";
       <main class="container-fluid">
         <div id="content">
           <?php
+          include "security/database/connection.php";
           if (isset($_GET['folder']) && isset($_GET['file'])){ // se tiver include
             if(@!include $_GET['folder'].$_GET['file']){  //se o include de uma pagina der errado..........o "@" suprime o erro
               include '404.php';
             }
-          }else{
+          } else if (isset($_GET['file'])){
+            include $_GET['file'];
+          }
+          else{
             ?>
             <div class="jumbotron jumbotron-fluid vh-100" id='bem-vindo'>
               <h1 class="display-4 text-black text-center">Bem vindo, <?php echo $_SESSION['usuario'];?>!</h1>
@@ -214,6 +221,7 @@ include "security/database/connection.php";
           }
           ?>
         </div>
+        
       </main>
       <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid">
@@ -268,3 +276,17 @@ include "security/database/connection.php";
 
 </body>
 </html>
+
+<?php
+if($_GET['msg'] != null){
+  ?>
+  <script type="text/javascript">
+    document.getElementById("alert").innerHTML = 
+  "<div class='alert alert-warning alert-dismissible fade show mt-4' role='alert' style='display:none; float: right;' ><?php echo $_GET['msg']; ?>
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
+  $(".alert").fadeIn( 300 ).delay( 3000 ).fadeOut( 400 );
+
+    </script>
+  <?php
+}
+?>

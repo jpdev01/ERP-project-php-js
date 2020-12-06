@@ -20,7 +20,7 @@
     <h4>Categorias</h4>
     <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <div class="table-responsive">
-        <table class='table table-striped table-hover table-sm pt-3' id='employee_table'>
+        <table class='table table-striped table-hover table-sm pt-3 table-borderless' id='employee_table'>
           <thead class='thead-dark rounded'>
             <tr>
               <th scope="col">ID</th>

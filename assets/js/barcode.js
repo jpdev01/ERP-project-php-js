@@ -10,18 +10,19 @@ jQuery("frmins.php").ready(function(){
 });
 */
 
-function changeInputCode(){
+function changeInputCode() {
     code = $("#inputCode").val();
-    if (validaCode(code)) {
-        alert("Válido");
-        $("#inputCode").removeClass("is-invalid");
-        $("#inputCode").addClass("is-valid");
-    }
-    else {
-        alert("inválido");
-        $("#inputCode").removeClass("is-valid");
-        $("#inputCode").addClass("is-invalid");
-    }
+    id = $("#id").val();
+    validaCode(id ,code, (resultado) => {
+        if (resultado == 0) {
+            $("#inputCode").removeClass("is-invalid");
+            $("#inputCode").addClass("is-valid");
+            configCode(code);
+        } else {
+            $("#inputCode").removeClass("is-valid");
+            $("#inputCode").addClass("is-invalid");
+        }
+    });
 }
 
 
@@ -29,7 +30,7 @@ $('#checkInputCode').change(function () {
     $('#inputCode').removeAttr('disabled');
 });
 
-function criarCode(input) {
+function configCode(input) {
     var code = $("#inputCode").val();
     JsBarcode("#barcode", code);
 }
@@ -70,11 +71,12 @@ function setValueCode(input) {
 }
 
 $('.checkCodeInputMode').on('change', function () {
-
+    
     if ($(this).val() == 'auto') {
         $("#inputCode").prop("disabled", true);
-        geratedCode = gerarCode();
+        defineCode();
         $("#inputCode").val(geratedCode);
+
     }
     if ($(this).val() == 'manual') {
         $('#inputCode').removeAttr('disabled');
@@ -83,33 +85,33 @@ $('.checkCodeInputMode').on('change', function () {
 });
 
 $("form.php").ready(function () {
-
-    defineCode("#inputCode");
-
 });
 
 function defineCode(input) {
     setValueCode(input);
     setTimeout(function () {
         code = $(input).val();
-        criarCode("#inputCode");
+        configCode("#inputCode");
     }, 500);
 }
 
-function validaCode(code) {
+function validaCode(id, code, callback) {
+    if (id){
+        dataSend = {
+            code: code, 
+            id: id
+        }
+    }else{
+        dataSend = {
+            code: code
+        }
+    }
     jQuery.ajax({
         type: "POST",
         url: "app/products/getCodes.php",
-        data: { code: code },
+        data: dataSend,
         success: function (qtde) {
-            alert("qtde=" + qtde);
-            qtde = parseInt(qtde);
-            if (qtde > 0) {
-                alert("maior q 0");
-                return false;
-            }
-            alert("retorna true");
-            return true;
+            callback(qtde);
         }
     });
 }

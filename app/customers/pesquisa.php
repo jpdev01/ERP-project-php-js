@@ -56,7 +56,6 @@ $stm_sql = $db_connection->prepare($sql);
 $stm_sql -> execute();
 
 $users = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
-echo $sql;
 foreach($users as $user){
   ?>
   <tr onclick="conteudo('#content', 'customers', 'focus', '<?php echo $user['id']; ?>', 'null')">

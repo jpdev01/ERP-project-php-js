@@ -3,6 +3,8 @@ jQuery(document).ready(function(){
   $("#cmp_parc").hide();
   $("#cmp_entrada").hide();
   $("#cmp_desc").hide();
+  $("#btn_view_parcels").hide();
+  $("#flagField").hide();
   // scanner(null, 'app/sell/viewproducts.php', '#products');
   //----------------------scanner parte de vendas-----------------------------------
   //se está no modo scanner ou teclado
@@ -114,6 +116,8 @@ jQuery(document).ready(function(){
       // desconto();
     }
   });
+
+
   jQuery('#condCheck').change(function(){
     if($("#condCheck").is(':checked')){
       $(".venda").hide();
@@ -167,12 +171,26 @@ jQuery(document).ready(function(){
     if($("#metPgto").val()=='1'){
       $("#cmp_parc").show();
       $("#cmp_entrada").show();
+      //$("#btn_view_parcels").show();
     }else{
       $("#cmp_parc").hide();
       $("#cmp_entrada").hide();
       $("#qtdeparc").val('1');
+      //$("#btn_view_parcels").hide();
     }
   });
+
+  $("#frmpgto").on("change", function () {
+    val = $("#frmpgto").val();
+    if(val == 1 || val == 2){
+      $("#flagField").show();
+    }else{
+      $("#flagField").hide();
+      $("#flagField").val('');
+    }
+  });
+
+
   $("#box-avista").on("change", function () {
     $("#div-parcelas").hide();
   });
@@ -184,6 +202,11 @@ jQuery(document).ready(function(){
       $("#cliente").val("");
       scanner(null, 'app/sell/viewproducts.php', '#products');
     }
+  });
+
+  $("#btn_view_parcels").on("click", function () {
+    openModal('app/sell/view_parcels.php', {}, '', {titulo: 'Visualização das Parcelas', tamanho: 'md', searchbar: 'false', filter: 'false', 
+              htmlModal: '#htmlModal', button: 'btnModal'})
   });
   //
 });
@@ -237,3 +260,4 @@ function select_cliente(id, cliente){
 
   // $('#exampleModal').modal('hide');
 }
+

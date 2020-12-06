@@ -3,9 +3,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
-                <span class="display-1 d-block">404</span>
+                <span class="display-1 d-block">Erro!</span>
                 <div class="mb-4 lead">
-                  Página não encontrada
+                  Algumas informações não foram encontradas
                   <img src="assets/images/sad.png" height="20px" display="block">
                 </div>
                 <a href="main.php" class="btn btn-link">Voltar ao menu inicial</a>

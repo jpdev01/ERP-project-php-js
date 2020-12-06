@@ -27,18 +27,20 @@ $data = date( 'd/m/Y h:m', strtotime($venda['data']));
     ?>
     
     <?php
-    if($venda['frmPgto']==0){
+    if($venda['frmPgto'] == 0){
       $frmPgto='Dinheiro';
-    }else if($venda['frmPgto']==1){
+    }else if($venda['frmPgto'] == 1){
       $frmPgto='Cartão de crédito';
-    }else if($venda['frmPgto']==2){
+    }else if($venda['frmPgto'] == 2){
       $frmPgto='Cartão de débito';
-    }else if($venda['frmPgto']==3){
+    }else if($venda['frmPgto'] == 3){
       $frmPgto='Cheque';
-    }else if($venda['frmPgto']==4){
+    }else if($venda['frmPgto'] == 4){
       $frmPgto='Crediário';
-    }else{
+    }else if($venda['frmPgto'] == 5){
       $frmPgto='Depósito / Transferência';
+    }else if($venda['frmPgto'] == 6){
+      $frmPgto='PIX';
     }
     if($venda['metPgto']==0){
       $metPgto='A vista';

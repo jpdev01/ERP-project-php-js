@@ -55,9 +55,9 @@ jQuery(document).ready(function(){
         data: dados,
         success: function( data ){
           if(pathname=="app/payment"){
-            if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=frmins.php";}
+            if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=frmins.php&msg="+data;}
           }else{
-            if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=library.php";}
+            if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=library.php&msg="+data;}
           }
         }
       });
@@ -77,7 +77,7 @@ jQuery(document).ready(function(){
       data: dados,
       success: function( data ){
         // if(!alert(data)){window.location.reload();}
-        if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=library.php";}
+        if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=library.php&msg="+data;}
       }
     });
     return false;

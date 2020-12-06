@@ -13,7 +13,7 @@
     <div class="col-6">
       <form action="" method="post" id="ajax_form">
         <div class="form-row">
-          <div class="form-group col-md">
+          <div class="form-group col-md-5">
             <label for="data">Data:</label>
             <input type='datetime-local' name='data' id='data' class="form-control" value="<?php date_default_timezone_set('America/Sao_Paulo');
             echo Date('Y-m-d\TH:i',time()) ?>">
@@ -80,5 +80,7 @@
     </div>
   </div>
 </div>
+<!--
 <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+-->

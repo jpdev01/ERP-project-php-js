@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-6">
-      <div class="input-group">
+      <div class="input-group input-group-sm">
         <input class="form-control" id="search"type="text" placeholder="Pesquisar produto..." aria-label="Search" aria-describedby="basic-addon2" />
         <div class="input-group-append">
           <button class="btn btn-light" type="button"><i class="fas fa-search"></i></button>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="col-md-3">
-      <button type="button" class="btn btn-light pull-right h2" data-toggle="collapse" data-target="#myFilters" aria-expanded="false" aria-controls="myFilters">
+      <button type="button" class="btn btn-light pull-right h2 btn-sm" data-toggle="collapse" data-target="#myFilters" aria-expanded="false" aria-controls="myFilters">
         <!-- Mais filtros -->
         <img src='assets/css/bootstrap-icons-1.0.0/funnel-fill.svg' width='100%' height='100%'>
       </button>

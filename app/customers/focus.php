@@ -61,10 +61,18 @@ $cliente = $stm_sql->fetch(PDO::FETCH_ASSOC);
     <div class="col-6">
       <p class="border-bottom"><strong>Identidade</strong></p>
       <p><strong>Apelido: </strong><?php echo $cliente['apelido'];?></p>
-      <p><strong>Apelido: </strong><?php echo $cliente['apelido'];?></p>
       <p><strong>CPF: </strong><?php echo $cliente['cpf'];?>  </p>
       <p><strong>RG: </strong><?php echo $cliente['rg'];?>  </p>
-      <p><strong>Data de nascimento:</strong><?php echo $cliente['dataNascimento'];?>  </p>
+
+      <p><strong>Data de nascimento:</strong><?php 
+      if ($cliente['dataNascimento'] != 0000-00-00){
+        $cliente['dataNascimento'] = date('d/m/Y', strtotime($cliente['dataNascimento']));
+      } else {
+        $cliente['dataNascimento'] = " Nenhum registro";
+      }
+      
+      echo $cliente['dataNascimento'];
+      ?>  </p>
     </div>
 
     <div class="col-6">
@@ -73,9 +81,7 @@ $cliente = $stm_sql->fetch(PDO::FETCH_ASSOC);
       <p><strong>Telefone: </strong><?php echo $cliente['fone'];?>  </p>
       <p><strong>Celular: </strong><?php echo $cliente['celular'];?>  </p>
       <?php
-      $arrEnd = $cliente['end'];
-      $arrEnd = unserialize ($arrEnd);
-      $end = $arrEnd['logradouro'].", ".$arrEnd['complemento'].", ".$arrEnd['bairro'].", ".$arrEnd['municipio'].", ".$arrEnd['uf']."-".$arrEnd['cep'].".";
+      $end = $cliente['logradouro'].", ".$cliente['complemento'].", ".$cliente['bairro'].", ".$cliente['cidade'].", ".$cliente['uf']."-".$cliente['cep'].".";
       ?>
       <p><strong>Endereço: </strong><?php echo $end; ?></p>
     </div>

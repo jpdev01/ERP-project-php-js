@@ -11,7 +11,7 @@
     </div>
 
     <div class="col-md-3">
-      <button type="button" class="btn btn-light pull-right h2" data-toggle="collapse" data-target="#myFilters" aria-expanded="false" aria-controls="myFilters">
+      <button type="button" class="btn btn-light pull-right h2 btn-sm" data-toggle="collapse" data-target="#myFilters" aria-expanded="false" aria-controls="myFilters">
         <!-- Mais filtros -->
         <img src='assets/css/bootstrap-icons-1.0.0/funnel-fill.svg' width='100%' height='100%'>
       </button>
@@ -74,7 +74,7 @@
 
     <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <div class='table-responsive'>
-        <table class='table table-striped table-hover table-md' id='employee_table'>
+        <table class='table table-sm table-striped table-hover' id='employee_table'>
           <thead class='thead-dark rounded'>
             <tr>
               <th class="th-sm" scope='col'>Código do Cliente</th>

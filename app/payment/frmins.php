@@ -7,10 +7,11 @@ $view = isset($_GET['view']) ? $_GET['view'] : 'list';
 <div class="col-12">
   <div class="row">
     <div class="col-8">
-      <h2>Compras</h2>
+      <h5 class="d-inline">Compras</h5>
+      <button type="button" class="btn btn-outline-light"><a class="text-muted" href="main.php?folder=app/payment/&file=future_payments.php">Visualizar futuras entradas</a></button>
     </div>
     <div class="col-4">
-      <h2>Registrar pagamento</h2>
+      <h5>Registrar pagamento</h5>
     </div>
   </div>
   <div class="row">

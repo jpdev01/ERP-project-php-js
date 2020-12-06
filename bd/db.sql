@@ -112,7 +112,6 @@ CREATE TABLE IF NOT EXISTS `neusamoda_db`.`clientes` (
   `fone` BIGINT(14) NULL,
   `celular` BIGINT(14) NULL,
   `rg` VARCHAR(20) NULL,
-  `end` VARCHAR(100) NULL,
   `dataRegistro` DATE NOT NULL,
   `dsc` TEXT NULL,
   `credito` TINYINT(1) NULL COMMENT '0 <- quite\n1 <- devedor',
@@ -121,6 +120,12 @@ CREATE TABLE IF NOT EXISTS `neusamoda_db`.`clientes` (
   `refer` VARCHAR(45) NULL,
   `filiacao` VARCHAR(45) NULL,
   `cargo` VARCHAR(45) NULL,
+  `uf` CHAR(2) NULL,
+  `cidade` VARCHAR(50) NULL,
+  `logradouro` VARCHAR(60) NULL,
+  `bairro` VARCHAR(30) NULL,
+  `complemento` VARCHAR(20) NULL,
+  `cep` VARCHAR(10) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

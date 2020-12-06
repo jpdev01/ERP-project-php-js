@@ -17,7 +17,7 @@
   <div class="row mt-3">
     <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
       <div class="table-responsive">
-        <table class='table table-striped table-hover table-md pt-3'>
+        <table class='table table-striped table-hover table-sm pt-3'>
           <thead class='thead-dark'>
             <tr>
               <th scope="col">ID</th>

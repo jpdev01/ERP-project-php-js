@@ -10,9 +10,9 @@
   $genero            = $_POST['genero'];
   $estilo            = ($_POST['estilo']!="")?$_POST['estilo']:null;
   $tam           = ($_POST['tamanho']!="")?$_POST['tamanho']:null;
-  $dataCompra        = $_POST['dataCompra'];
+  $dataCompra        = $_POST['datacompra'];
   $qtde              = $_POST['qtde'];
-  $vlrPago             = ($_POST['vlrPago']!="")?$_POST['vlrPago']:0;
+  $vlrPago             = isset($_POST['vlrPago']) ? $_POST['vlrPago'] : 0;
   $colecao           = ($_POST['colecao']!="")?$_POST['colecao']:null;
   $dataVenda         = null;
   $code               = $_POST['codeScanner'];

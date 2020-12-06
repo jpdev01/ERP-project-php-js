@@ -102,7 +102,9 @@ if ($stm_sql->rowCount()!=0){
   </div>
   <?php
 }else{
-  echo "Nenhuma venda foi realizada!";
+  ?>
+        <script> window.location.href = 'main.php?file=error.php'; </script>
+        <?php
 }
 include "app/reports/modal.php";
 ?>

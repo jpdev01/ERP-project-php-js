@@ -53,6 +53,10 @@ $("historic.php").ready(function(){
   viewCustomerHistory();
 });
 
+$("form.php").ready(function(){
+  $('.inputGroupFamily').hide();
+});
+
 function query(data, callback, div){
   jQuery.ajax({
     type: "POST",
@@ -129,4 +133,14 @@ function viewCustomerHistory(){
     }
   });
   //return false;
+}
+
+function addFamily(){
+
+  elementHtml = ".inputGroupFamily";
+  if($( elementHtml).is( ":visible" )){
+    $(elementHtml).hide();
+  }else{
+    $(elementHtml).show();
+  }
 }

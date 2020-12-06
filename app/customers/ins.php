@@ -1,28 +1,36 @@
 <?php
 
-  $nome               = $_POST['nome'];
-  $apelido            = $_POST['apelido'];
-  $cpf                = $_POST['cpf'];
-  $dataNascimento     = $_POST['dataNascimento'];
-  $email              = $_POST['email'];
-  $fone           = $_POST['fone'];
-  $celular            = $_POST['celular'];
-  $rg                 = $_POST['rg'];
-  $endereco = array();
-  $endereco['logradouro']           = ($_POST['logradouro']!="")?$_POST['logradouro']:"";
-  $endereco['complemento']        = ($_POST['complemento']!="")?$_POST['complemento']:"";
-  $endereco['bairro']             = ($_POST['bairro']!="")?$_POST['bairro']:"";
-  $endereco['municipio']          = ($_POST['municipio']!="")?$_POST['municipio']:"";
-  $endereco['uf']                 = ($_POST['uf']!="")?$_POST['uf']:"";
-  $endereco['cep']                = ($_POST['cep']!="")?$_POST['cep']:"";
-  $endereco = serialize($endereco);
-  $dataRegistro       = $_POST['dataRegistro'];
-  $dsc         = $_POST['dsc'];
+  $nome               = $_POST['nome']; //
+  $apelido            = $_POST['apelido']; //
+  $cpf                = $_POST['cpf']; //
+  $rg                 = $_POST['rg'];//
+  $dataNascimento     = $_POST['dataNascimento']; //
+
+  $email              = $_POST['email'];//
+  $fone           = $_POST['fone'];//
+  $celular            = $_POST['celular'];//
+
+  $logradouro          = ($_POST['logradouro']!="")?$_POST['logradouro']:"";
+  $complemento         = ($_POST['complemento']!="")?$_POST['complemento']:"";
+  $bairro            = ($_POST['bairro']!="")?$_POST['bairro']:"";
+  $cidade            = ($_POST['cidade']!="")?$_POST['cidade']:"";
+  $uf                = ($_POST['uf']!="")?$_POST['uf']:"";
+  $cep               = ($_POST['cep']!="")?$_POST['cep']:"";
+  $dataRegistro       = $_POST['dataRegistro'];//
+  $dsc                = $_POST['dsc'];
   $medida         = $_POST['medida'];
-  $tam         = $_POST['tam'];
+  $tam             = $_POST['tam'];
   $refer         = $_POST['refer'];
   $filiacao         = $_POST['filiacao'];
   $cargo         = $_POST['cargo'];
+  $credito         = null;
+
+  $FamilyFather = isset($_POST['FamilyFather']) ? $_POST['FamilyFather'] : null;
+  $FamilyMother = isset($_POST['FamilyMother']) ? $_POST['FamilyMother'] : null;
+  $FamilyGrant = isset($_POST['FamilyGrant']) ? $_POST['FamilyGrant'] : null;
+  $FamilySis = isset($_POST['FamilySis']) ? $_POST['FamilySis'] : null;
+  $FamilySon = isset($_POST['FamilySon']) ? $_POST['FamilySon'] : null;
+  $FamilyOuthers = isset($_POST['FamilyOuthers']) ? $_POST['FamilyOuthers'] : null;
 
   $msg = "erro de programação";
 
@@ -34,7 +42,26 @@
     $stm_sql -> execute();
 
     if ($stm_sql->rowCount()==0){
-      $sql = "INSERT INTO clientes (id, nome, apelido, cpf, dataNascimento, email, fone, celular, rg, end, dataRegistro, dsc, medida, tam, refer, filiacao, cargo) VALUES (:id, :nome, :apelido, :cpf, :dataNascimento, :email, :fone, :celular, :rg, :end, :dataRegistro, :dsc, :medida, :tam, :refer, :filiacao, :cargo)";
+
+      $col = ["id", "nome", "apelido", "cpf", "dataNascimento", "email", "fone", "celular", "rg", "dataRegistro", "dsc", "credito", "tam", "medida", "refer", "filiacao", "cargo", "uf", "cidade", "logradouro", "bairro", "complemento", "cep", "pai", "mae", "filho", "avo", "irmao", "outros"];
+
+      $sql = "INSERT INTO clientes (";
+      foreach ($col as $key => $value) {
+        $sql.= $value;
+        if ($key + 1 !=  sizeof($col)){
+          $sql.= ", ";
+        }else{
+          $sql.= ") VALUES (";
+        }
+      }
+      foreach ($col as $key => $value) {
+        $sql.= ":".$value;
+        if ($key + 1 != sizeof($col)){
+          $sql.= ", ";
+        }else{
+          $sql.= ")";
+        }
+      }
       $stm_sql = $db_connection-> prepare ($sql);
 
       $id = null;
@@ -48,7 +75,14 @@
       $stm_sql-> bindParam(':fone', $fone);
       $stm_sql-> bindParam(':celular', $celular);
       $stm_sql-> bindParam(':rg', $rg);
-      $stm_sql-> bindParam(':end', $endereco);
+
+      $stm_sql-> bindParam(':logradouro', $logradouro);
+      $stm_sql-> bindParam(':complemento', $complemento);
+      $stm_sql-> bindParam(':bairro', $bairro);
+      $stm_sql-> bindParam(':cidade', $cidade);
+      $stm_sql-> bindParam(':uf', $uf);
+      $stm_sql-> bindParam(':cep', $cep);
+
       $stm_sql-> bindParam(':dataRegistro', $dataRegistro);
       $stm_sql-> bindParam(':dsc', $dsc);
       $stm_sql-> bindParam(':medida', $medida);
@@ -56,6 +90,7 @@
       $stm_sql-> bindParam(':refer', $refer);
       $stm_sql-> bindParam(':filiacao', $filiacao);
       $stm_sql-> bindParam(':cargo', $cargo);
+      $stm_sql-> bindParam(':credito', $credito);
 
       $result = $stm_sql->execute();
 

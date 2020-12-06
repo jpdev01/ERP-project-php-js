@@ -38,7 +38,7 @@ if ($pag=="customers"){
             <?php
           }else{
             ?>
-            <td><input type='radio' name='radio-pgto-venda-selec' onchange="select_venda(<?php echo $compra['id'];?>)">Selecionar</td>
+            <td style="font-size: 10px;"><input style="" type='radio' name='radio-pgto-venda-selec' onchange="select_venda(<?php echo $compra['id'];?>)">Selecionar</td>
             <?php
           }
         }

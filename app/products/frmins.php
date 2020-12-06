@@ -1,6 +1,4 @@
-
-
-    <div class="container mypagina shadow-sm p-4">
-      <?php include "app/products/form.php"; ?>
-    </div>
-
+<?php
+$form_title = "ajax_form";
+include "app/products/form.php"; 
+?>
