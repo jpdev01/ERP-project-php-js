@@ -142,6 +142,9 @@ jQuery(document).ready(function(){
     var vartotal = Cookies.get("sell");
     var varfinal = vartotal-desconto;
     varfinal = vartotal-desconto;
+    if (isNaN(varfinal)){
+      varfinal = vartotal;
+    }
     $("#varfinal").text("Valor final: R$"+varfinal);
     // setCookie('codes', varfinal, null);
   }
@@ -230,7 +233,10 @@ function remove_prod_sell(code){
       var vartotal = Cookies.get("sell");
       var varfinal = vartotal-desconto;
       varfinal = vartotal-desconto;
-      $("#varfinal").text("Valor final: R$"+varfinal);
+      if (isNaN(varfinal)){
+        varfinal = vartotal;
+      }
+      $("#varfinal").text("Valor final: R$" + varfinal);
       Cookies.set('explodesell', 'none', null, '/');
     }
   });
@@ -261,3 +267,8 @@ function select_cliente(id, cliente){
   // $('#exampleModal').modal('hide');
 }
 
+function productExchange(venda){
+  href = 'main.php?folder=app/sell/&file=exchange.php';
+  params = '&id=' + venda['idVenda'];
+  location.href = href + params;
+}

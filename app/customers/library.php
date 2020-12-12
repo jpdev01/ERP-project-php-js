@@ -1,22 +1,4 @@
 <div class="col-12">
-  <div class="row" id="top">
-    <div class="col-md-3" id='title-01'>
-      <h2></h2>
-    </div>
-
-    <div class="col-md-6">
-    <?php
-    include "modules/searchbar.php";
-    ?>
-    </div>
-
-    <div class="col-md-3">
-      <button type="button" class="btn btn-light pull-right h2 btn-sm" data-toggle="collapse" data-target="#myFilters" aria-expanded="false" aria-controls="myFilters">
-        <!-- Mais filtros -->
-        <img src='assets/css/bootstrap-icons-1.0.0/funnel-fill.svg' width='100%' height='100%'>
-      </button>
-    </div>
-  </div> <!-- /#top -->
   <div class="row mt-3 mb-3">
     <div class="container collapse" id="myFilters">
       <div class="container card card-block">
@@ -72,7 +54,7 @@
   </div>
   <div class="row">
 
-    <div class="my-custom-scrollbar my-custom-scrollbar-primary container">
+    <div class="my-custom-scrollbar my-custom-scrollbar-primary container-fluid">
       <div class='table-responsive'>
         <table class='table table-sm table-striped table-hover' id='employee_table'>
           <thead class='thead-dark rounded'>

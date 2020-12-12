@@ -23,7 +23,7 @@ $iduser = $user['id'];
 
 
 $vlrTotal = isset($_COOKIE['sell']) ? $_COOKIE['sell'] : 0;
-$data   = ($_POST['date']!="")?$_POST['date']:'erro';
+$data   = isset($_POST['date']) ? $_POST['date'] : 'erro';
 $frmpgto   = ($_POST['frmpgto']!="")? $_POST['frmpgto'] : 'erro'; // O->dinheiro  1-> cartao de crédito     3->cartão de débito  4->cheque  5--> crediário
 $metPgto= ($_POST['metPgto']!="")?$_POST['metPgto']: 0; // 0-> avista 1->parcelado
 $qtdeParc = ($_POST['qtdeparc']!="")?$_POST['qtdeparc'] : 1;  // quantidade de parcelas no pagamento
@@ -33,7 +33,7 @@ $idcliente = isset($_POST['cliente']) ? $_POST['cliente'] : null;
 $codes = isset($_COOKIE['codes']) ? $_COOKIE['codes'] : null;
 $qtdes = isset($_COOKIE['qtdes']) ? $_COOKIE['qtdes'] : array();
 $nomeCliente = isset($_POST['nomeCliente']) ? $_POST['nomeCliente'] : "";
-$nomeCliente = isset($_POST['flag']) ? $_POST['flag'] : null;
+$bandeira = isset($_POST['flag']) ? $_POST['flag'] : null;
 
 // $condicional=0;
 
@@ -63,7 +63,7 @@ $stm_sql-> bindParam(':qtdeParc', $qtdeParc);
 $stm_sql-> bindParam(':cliente', $idcliente);
 $stm_sql-> bindParam(':produtos', $codes);
 $stm_sql-> bindParam(':iduser', $iduser);
-$stm_sql-> bindParam(':bandeira', $flag);
+$stm_sql-> bindParam(':bandeira', $bandeira);
 // $stm_sql-> bindParam(':condicional', $condicional);
 
 $result = $stm_sql->execute();

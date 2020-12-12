@@ -2,7 +2,7 @@
 
 include '../../security/database/connection.php';
 date_default_timezone_set('UTC');
-$dataAtual = date("Y-m-d");
+$dataAtual = date("m-d");
 $sql = "SELECT * FROM clientes WHERE dataNascimento = '" . $dataAtual . "'";
 
 $stm_sql = $db_connection->prepare($sql);

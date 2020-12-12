@@ -58,7 +58,7 @@ $stm_sql -> execute();
 $users = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
 foreach($users as $user){
   ?>
-  <tr onclick="conteudo('#content', 'customers', 'focus', '<?php echo $user['id']; ?>', 'null')">
+  <tr onclick="conteudo('#div-card', 'customers', 'focus', '<?php echo $user['id']; ?>', 'null')">
     <td><?php echo $user['id']; ?></td>
     <td><?php echo $user['nome']; ?></td>
     <td><?php echo $user['cpf']; ?></td>

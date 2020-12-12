@@ -1,4 +1,6 @@
-
+<?php
+$inputGroupSize = "input-group-sm";
+?>
 <!-- <div class='container-fluid'> -->
 <div class="col-12">
   <div class="row">
@@ -13,25 +15,25 @@
     <div class="col-6">
       <form action="" method="post" id="ajax_form">
         <div class="form-row">
-          <div class="form-group col-md-5">
+          <div class="form-group col-md-5 <?php echo $inputGroupSize; ?>">
             <label for="data">Data:</label>
             <input type='datetime-local' name='data' id='data' class="form-control" value="<?php date_default_timezone_set('America/Sao_Paulo');
             echo Date('Y-m-d\TH:i',time()) ?>">
           </div>
-          <div class="form-group col-md">
+          <div class="form-group col-md <?php echo $inputGroupSize; ?>">
             <label for="tipo">Tipo:</label>
             <select class="form-control" id="tipo" name='tipo'>
               <option value="0">Entrada</option>
               <option value="1">Saída</option>
             </select>
           </div>
-          <div class="form-group">
+          <div class="form-group <?php echo $inputGroupSize; ?>">
             <label for="obs">Descrição</label>
             <input type="text" class="form-control" id="obs" name='obs'>
           </div>
         </div>
         <div class='form-group'>
-          <div class="input-group">
+          <div class="input-group <?php echo $inputGroupSize; ?>">
             <div class="input-group-prepend">
               <span class="input-group-text">Valor:</span>
               <span class="input-group-text">R$</span>
@@ -40,11 +42,11 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-2">
-            <button type="submit" class="btn btn-success">Inserir</button>
+          <div class="form-group mr-1">
+            <button type="submit" class="btn btn-success btn-sm">Inserir</button>
           </div>
-          <div class="form-group col-md-2">
-            <button type="submit" class="btn btn-danger">Limpar</button>
+          <div class="form-group">
+            <button type="submit" class="btn btn-danger btn-sm">Limpar</button>
           </div>
         </div>
       </form>

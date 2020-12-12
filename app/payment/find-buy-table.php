@@ -1,4 +1,4 @@
-<table class='table table-striped table-sm h' id="table">
+<table class='table table-striped table-sm container-fluid' id="table">
           <thead class='thead-dark'>
             <tr>
               <th scope="col">Data</th>

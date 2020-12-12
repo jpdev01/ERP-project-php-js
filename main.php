@@ -2,16 +2,18 @@
 include "security/authentication/validation.php";
 include "security/database/connection.php";
 date_default_timezone_set('UTC');
+include "modules/environment.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Neusa Moda | <?php echo $_SESSION['usuario'];?></title>
+  <title>Neusa Moda | <?php echo $_SESSION['usuario']; ?></title>
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link href="assets/imports/styles.css" rel="stylesheet" />
   <link href="assets/css/style.css" rel="stylesheet">
@@ -31,7 +33,8 @@ date_default_timezone_set('UTC');
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 
 <!-- <script src="assets/js/dashboard.js"></script> -->
-<body class="sb-nav-fixed">
+
+<body class="sb-nav-fixed" style="background-color: #DCDCDC;">
 
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 8%;">
@@ -49,18 +52,18 @@ date_default_timezone_set('UTC');
     </form> -->
     <!-- Navbar-->
     <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" style="position: relative;">
-    <ul class="navbar-nav ml-auto ml-md-0 position-relative">
-      <li class="nav-item dropdown bg-dark position-relative">
-        <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw" style="position: relative;"></i></a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <!-- <a class="dropdown-item" href="#">Settings</a>
+      <ul class="navbar-nav ml-auto ml-md-0 position-relative">
+        <li class="nav-item dropdown bg-dark position-relative">
+          <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw" style="position: relative;"></i></a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <!-- <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a> -->
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="security/authentication/logout.php" tabindex="-1">Logout</a>
-        </div>
-      </li>
-    </ul>
-  </div>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="security/authentication/logout.php" tabindex="-1">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
   </nav>
   <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
@@ -72,7 +75,7 @@ date_default_timezone_set('UTC');
               <div class="sb-nav-link-icon">
 
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                 </svg>
 
               </div>
@@ -82,7 +85,7 @@ date_default_timezone_set('UTC');
               <div class="sb-nav-link-icon">
 
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-inbox-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
+                  <path fill-rule="evenodd" d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm-1.17-.437A1.5 1.5 0 0 1 4.98 3h6.04a1.5 1.5 0 0 1 1.17.563l3.7 4.625a.5.5 0 0 1 .106.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z" />
                 </svg>
 
               </div>
@@ -92,7 +95,7 @@ date_default_timezone_set('UTC');
               <div class="sb-nav-link-icon">
 
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                  <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
                 </svg>
 
 
@@ -104,7 +107,7 @@ date_default_timezone_set('UTC');
               <div class="sb-nav-link-icon">
 
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                  <path fill-rule="evenodd" d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
                 </svg>
 
               </div>
@@ -126,7 +129,7 @@ date_default_timezone_set('UTC');
               <div class="sb-nav-link-icon">
 
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-book-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                  <path fill-rule="evenodd" d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
                 </svg>
 
               </div>
@@ -149,41 +152,41 @@ date_default_timezone_set('UTC');
               htmlModal: '#html-modal-main',
               button: 'btnModal',
               })">Aniversariantes</a>
-                
+
               </nav>
             </div>
             <?php
-            if ($_SESSION['permission']=="adm"){
+            if ($_SESSION['permission'] == "adm") {
             ?>
-            <a class="nav-link" href="main.php?folder=app/reports/&file=dashboard.php">
-              <div class="sb-nav-link-icon">
+              <a class="nav-link" href="main.php?folder=app/reports/&file=dashboard.php">
+                <div class="sb-nav-link-icon">
 
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="4" height="5" x="1" y="10" rx="1"/>
-                  <rect width="4" height="9" x="6" y="6" rx="1"/>
-                  <rect width="4" height="14" x="11" y="1" rx="1"/>
-                </svg>
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="4" height="5" x="1" y="10" rx="1" />
+                    <rect width="4" height="9" x="6" y="6" rx="1" />
+                    <rect width="4" height="14" x="11" y="1" rx="1" />
+                  </svg>
 
-              </div>
-              Dashboard
-            </a>
+                </div>
+                Dashboard
+              </a>
 
-            <a class="nav-link"  href="main.php?folder=app/users/&file=library.php">
-              <div class="sb-nav-link-icon">
+              <a class="nav-link" href="main.php?folder=app/users/&file=library.php">
+                <div class="sb-nav-link-icon">
 
 
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                </svg>
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                  </svg>
 
-              </div>
-              Usuários
-            </a>
-            
+                </div>
+                Usuários
+              </a>
+
             <?php
-}
+            }
 
-             ?>
+            ?>
           </div>
         </div>
         <div class="sb-sidenav-footer">
@@ -192,36 +195,38 @@ date_default_timezone_set('UTC');
         </div>
       </nav>
     </div>
-    <?php
 
-    ?>
     <div id="html-modal-main"></div>
-    <div id="layoutSidenav_content" class="mt-4">
+    <div id="layoutSidenav_content" class="" style="background-color: #DCDCDC;">
+
+      <?php
+      include "modules/searchbar.php"
+      ?>
       <main class="container-fluid">
         <div id="content">
-          <?php
-          include "security/database/connection.php";
-          if (isset($_GET['folder']) && isset($_GET['file'])){ // se tiver include
-            if(@!include $_GET['folder'].$_GET['file']){  //se o include de uma pagina der errado..........o "@" suprime o erro
-              include '404.php';
-            }
-          } else if (isset($_GET['file'])){
-            include $_GET['file'];
-          }
-          else{
-            ?>
-            <div class="jumbotron jumbotron-fluid vh-100" id='bem-vindo'>
-              <h1 class="display-4 text-black text-center">Bem vindo, <?php echo $_SESSION['usuario'];?>!</h1>
-              <p class="lead text-black text-center">Esse software foi desenvolvido por João Pedro Truchinski Borba.</p>
-              <!-- <hr class="my-4"> -->
-              <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-              <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
-            </div>
+          <div class="card w-100 mb-4" id="div-card" style="min-height: 500px;">
             <?php
-          }
-          ?>
+            if (isset($_GET['folder']) && isset($_GET['file'])) { // se tiver include
+              if (@!include $_GET['folder'] . $_GET['file']) {  //se o include de uma pagina der errado..........o "@" suprime o erro
+                include '404.php';
+              }
+            } else if (isset($_GET['file'])) {
+              include $_GET['file'];
+            } else {
+            ?>
+              <div class="jumbotron jumbotron-fluid vh-100" id='bem-vindo'>
+                <h1 class="display-4 text-black text-center">Bem vindo, <?php echo $_SESSION['usuario']; ?>!</h1>
+                <p class="lead text-black text-center">Esse software foi desenvolvido por João Pedro Truchinski Borba.</p>
+                <!-- <hr class="my-4"> -->
+                <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+              <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+              </div>
+            <?php
+            }
+            ?>
+          </div>
         </div>
-        
+
       </main>
       <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid">
@@ -240,11 +245,11 @@ date_default_timezone_set('UTC');
 
 
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script type="text/javascript" src="assets/js/sell.js"></script>
+  <script type="text/javascript" src="assets/js/sell.js"></script>
   <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
   <!-- <script type="text/javascript" src="assets/js/bootstrap.js"></script>
   <script type="text/javascript" src="assets/js/bootstrap.js.map"></script> -->
-  
+
   <script type="text/javascript" src="assets/js/myscript.js"></script>
   <script type="text/javascript" src="assets/js/content.js"></script>
   <script type="text/javascript" src="assets/js/payment.js"></script>
@@ -275,18 +280,21 @@ date_default_timezone_set('UTC');
   <script type="text/javascript" src="assets/js/barcode.js"></script>
 
 </body>
+
 </html>
 
 <?php
-if($_GET['msg'] != null){
-  ?>
+if ($_GET['msg'] != null) {
+?>
   <script type="text/javascript">
-    document.getElementById("alert").innerHTML = 
-  "<div class='alert alert-warning alert-dismissible fade show mt-4' role='alert' style='display:none; float: right;' ><?php echo $_GET['msg']; ?>
-  <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
-  $(".alert").fadeIn( 300 ).delay( 3000 ).fadeOut( 400 );
-
-    </script>
-  <?php
+    document.getElementById("alert").innerHTML =
+      "<div class='alert alert-warning alert-dismissible fade show mt-4' role='alert' style='display:none; float: right;' ><?php echo $_GET['msg']; ?> <
+      button type = 'button'
+    class = 'close'
+    data - dismiss = 'alert'
+    aria - label = 'Close' > < span aria - hidden = 'true' > & times; < /span></button > < /div>";
+    $(".alert").fadeIn(300).delay(3000).fadeOut(400);
+  </script>
+<?php
 }
 ?>

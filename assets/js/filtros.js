@@ -14,8 +14,7 @@ function load_dados(valores, page, div){
     data: valores,
     success: function(msg){
       // loading_hide();
-      var data = msg;
-      $(div).html(data).fadeIn();
+      $(div).html(msg).fadeIn();
     }
   });
 }
@@ -26,6 +25,17 @@ $(document).ready(function(){
 
   $('#search').keyup(function(){
     search_table($(this).val());
+  });
+
+  $('#check-flags').change(function(){
+
+    valores = {
+      flag: $(this).val(),
+      year: $("#input-year").val(),
+      month: $("#input-month").val()
+    };
+
+    load_dados(valores, 'app/future-payments/query.php', '#tbody-future-payments');
   });
 
   $('#check-status').change(function(){

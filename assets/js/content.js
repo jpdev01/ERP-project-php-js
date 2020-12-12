@@ -1,6 +1,7 @@
 
 
 function conteudo(div, pasta, arquivo, id, cont2, filtro){
+  $("#all-filters").hide();
   if ($('#staticBackdrop').is(':visible')){
     console.log("Retirando modal da tela...");
     document.getElementById("btnModal").click();
