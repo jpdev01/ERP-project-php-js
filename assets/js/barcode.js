@@ -32,7 +32,7 @@ $('#checkInputCode').change(function () {
 
 function configCode(input) {
     var code = $("#inputCode").val();
-    //JsBarcode("#barcode", code);
+    JsBarcode("#barcode", code);
 }
 
 function printCode(codigo) {
@@ -63,9 +63,6 @@ function setValueCode(input) {
         type: "POST",
         url: "app/products/getCodes.php",
         success: function (data) {
-            if (data == ""){
-                data = 0;
-            }
             data = parseInt(data);
             data++;
             $(input).val(data);

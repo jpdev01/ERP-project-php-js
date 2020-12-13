@@ -1,4 +1,5 @@
 <?php
+ob_start();
 include "security/authentication/validation.php";
 include "security/database/connection.php";
 date_default_timezone_set('UTC');
@@ -51,10 +52,10 @@ include "modules/environment.php";
       </div>
     </form> -->
     <!-- Navbar-->
-    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" >
-      <ul class="navbar-nav ml-auto ml-md-0 position-relative">
-        <li class="nav-item dropdown bg-dark position-relative">
-          <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw" style="position: relative;"></i></a>
+    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown bg-dark">
+          <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
             <!-- <a class="dropdown-item" href="#">Settings</a>
           <a class="dropdown-item" href="#">Activity Log</a> -->
@@ -151,7 +152,7 @@ include "modules/environment.php";
               filter: 'false', 
               htmlModal: '#html-modal-main',
               button: 'btnModal',
-              })">Aniversariantes</a>
+              });">Aniversariantes</a>
 
               </nav>
             </div>
@@ -225,6 +226,7 @@ include "modules/environment.php";
             }
             ?>
           </div>
+          <?php include "modules/notifications.php"; ?>
         </div>
 
       </main>
@@ -278,10 +280,8 @@ include "modules/environment.php";
   <script type="text/javascript" src="assets/js/modal.js"></script>
   <script type="text/javascript" src="assets/imports/JsBarcode.all.min.js"></script>
   <script type="text/javascript" src="assets/js/barcode.js"></script>
+  <script type="text/javascript" src="assets/js/notifications.js"></script>
 
   <script type="text/javascript" src="assets/framework/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
-
 </body>
-
 </html>
-

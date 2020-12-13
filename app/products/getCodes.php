@@ -24,10 +24,14 @@ else
     $stm_sql = $db_connection->prepare($sql);
     $stm_sql->execute();
     $qtde = $stm_sql->rowCount();
-    $codes = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
-    $qtde = (int) $qtde -1;
-    $code = $codes[$qtde];
-    echo $code['code'];
+    if ($qtde > 0){
+        $codes = $stm_sql->fetchAll(PDO::FETCH_ASSOC);
+        $qtde = (int) $qtde -1;
+        $code = $codes[$qtde];
+        echo $code['code'];
+    } else {
+        echo 0;
+    }
 }
 
 ?>

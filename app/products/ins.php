@@ -77,5 +77,5 @@
   else{
     $msg= "Esse produto já está cadastrado no banco de dados.";
   }
-  include $PATH_NOTIFICATIONS;
+  echo $msg;
 ?>
