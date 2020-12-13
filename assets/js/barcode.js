@@ -32,8 +32,7 @@ $('#checkInputCode').change(function () {
 
 function configCode(input) {
     var code = $("#inputCode").val();
-    code = parseInt(code);
-    JsBarcode("#barcode", code);
+    //JsBarcode("#barcode", code);
 }
 
 function printCode(codigo) {
@@ -64,6 +63,9 @@ function setValueCode(input) {
         type: "POST",
         url: "app/products/getCodes.php",
         success: function (data) {
+            if (data == ""){
+                data = 0;
+            }
             data = parseInt(data);
             data++;
             $(input).val(data);
@@ -85,8 +87,7 @@ $('.checkCodeInputMode').on('change', function () {
 
 });
 
-$("form.php").ready(function () {
-});
+
 
 function defineCode(input) {
     setValueCode(input);
@@ -112,6 +113,7 @@ function validaCode(id, code, callback) {
         url: "app/products/getCodes.php",
         data: dataSend,
         success: function (qtde) {
+            alert(qtde);
             callback(qtde);
         }
     });

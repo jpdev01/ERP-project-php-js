@@ -200,7 +200,7 @@ include "modules/environment.php";
     <div id="layoutSidenav_content" class="" style="background-color: #DCDCDC;">
 
       <?php
-      include "modules/searchbar.php"
+      include "modules/searchbar.php";
       ?>
       <main class="container-fluid">
         <div id="content">
