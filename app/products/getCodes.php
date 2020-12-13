@@ -32,7 +32,6 @@ else
     } else {
         echo 0;
     }
-    
 }
 
 ?>

@@ -84,8 +84,7 @@ $('.checkCodeInputMode').on('change', function () {
 
 });
 
-$("form.php").ready(function () {
-});
+
 
 function defineCode(input) {
     setValueCode(input);
@@ -111,6 +110,7 @@ function validaCode(id, code, callback) {
         url: "app/products/getCodes.php",
         data: dataSend,
         success: function (qtde) {
+            alert(qtde);
             callback(qtde);
         }
     });
