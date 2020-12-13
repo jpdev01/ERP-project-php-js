@@ -29,7 +29,10 @@ foreach ($venda['produtos'] as $product) {
             ?>
                 <li class="list-group-item">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input productsExchange" type="checkbox" value="<?php echo $product['code']; ?>" onchange="productsForExchange();">
+                        <input class="form-check-input productsExchange" type="checkbox" id="exchange-<?php echo $key; ?>" onchange="productsForExchange({
+                            code: <?php echo $product['code']; ?>,
+                            idInput: 'exchange-<?php echo $key; ?>'
+                        });">
                         <label class="form-check-label" for="product-exchange"><?php echo $product['code'] . " - " . $product['nome'] . " - R$" . $product['vlrVenda']; ?></label>
                     </div>
                 </li>
@@ -45,9 +48,10 @@ foreach ($venda['produtos'] as $product) {
 </div>
 <div class="row">
     <div class="col-12 ml-2">
-        <p id="text-diff-exchange">
-        Diferença:
+        <p id="text-diff-exchange" class="d-inline">
+            Diferença: R$
         </p>
+        <p id="diff" class="d-inline">0,00</p>
     </div>
 </div>
 
@@ -55,27 +59,40 @@ foreach ($venda['produtos'] as $product) {
 <script>
     $("#vartotal").hide();
 
-    function productsForExchange() {
-        var elements = document.getElementsByClassName("productsExchange");
-        var elements = Array.prototype.slice.call(elements);
-        productsSelectedExchange = [];
-        elements.forEach(function(entry) {
-            if($(entry).is(":checked")){
-                productsSelectedExchange.push(entry.value);
-            };
+    function productsForExchange(options) {
+        diff = $("#diff").text();
+        newProducts = $("#vartotal").text();
+        newProducts = newProducts.split("$");
+        newProductsVlr = newProducts[1];
+        newProductsVlr = parseInt (newProductsVlr);
+
+        if (diff == "0,00") {
+            var diff = 0;
+        }
+        diff = parseInt(diff);
+        jQuery.ajax({
+            type: "POST",
+            url: "app/products/select-optimized.php",
+            data: {
+                code: options.code
+            },
+            success: function(data) {
+
+                data = JSON.parse(data);
+                data = data[0];
+
+                if ($("#" + options.idInput).is(":checked")) {
+                    diff = diff - parseInt(data['vlrVenda']) + newProductsVlr;
+                } else {
+                    diff = diff + parseInt(data['vlrVenda']) + newProductsVlr;
+                }
+                $('#diff').html(diff);
+
+
+
+            }
         });
-        diff = calcDiffExchange();
-        $('#text-diff-exchange').html("Diferença: " + diff);
+
 
     }
-
-    function calcDiffExchange(){
-        value = document.getElementById("initialValue");
-        productsSelectedExchange.forEach(function(checkboxValues) {
-            alert(checkboxValues);
-            value = value - checkboxValues;
-        });
-        return value;
-    }
-
 </script>
