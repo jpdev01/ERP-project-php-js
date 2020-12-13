@@ -23,7 +23,7 @@ include "modules/environment.php";
 </head>
 <!-- js bootstrap -->
 <script src="assets/framework/jquery/jquery-3.5.1.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
+<!-- <script src="assets/js/bootstrap.js"></script> -->
 <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
@@ -51,7 +51,7 @@ include "modules/environment.php";
       </div>
     </form> -->
     <!-- Navbar-->
-    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" style="position: relative;">
+    <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" >
       <ul class="navbar-nav ml-auto ml-md-0 position-relative">
         <li class="nav-item dropdown bg-dark position-relative">
           <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw" style="position: relative;"></i></a>
@@ -279,22 +279,9 @@ include "modules/environment.php";
   <script type="text/javascript" src="assets/imports/JsBarcode.all.min.js"></script>
   <script type="text/javascript" src="assets/js/barcode.js"></script>
 
+  <script type="text/javascript" src="assets/framework/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
 
-<?php
-if ($_GET['msg'] != null) {
-?>
-  <script type="text/javascript">
-    document.getElementById("alert").innerHTML =
-      "<div class='alert alert-warning alert-dismissible fade show mt-4' role='alert' style='display:none; float: right;' ><?php echo $_GET['msg']; ?> <
-      button type = 'button'
-    class = 'close'
-    data - dismiss = 'alert'
-    aria - label = 'Close' > < span aria - hidden = 'true' > & times; < /span></button > < /div>";
-    $(".alert").fadeIn(300).delay(3000).fadeOut(400);
-  </script>
-<?php
-}
-?>

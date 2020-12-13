@@ -55,9 +55,10 @@ jQuery(document).ready(function(){
         data: dados,
         success: function( data ){
           if(pathname=="app/payment"){
-            if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=frmins.php&msg="+data;}
+            if(!newNotification(data)){window.location.href = "main.php?folder="+pathname+"/&file=frmins.php";}
           }else{
-            if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=library.php&msg="+data;}
+            newNotification();
+            //window.location.href = "main.php?folder="+pathname+"/&file=library.php";
           }
         }
       });
@@ -77,7 +78,7 @@ jQuery(document).ready(function(){
       data: dados,
       success: function( data ){
         // if(!alert(data)){window.location.reload();}
-        if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=library.php&msg="+data;}
+        if(!alert(data)){window.location.href = "main.php?folder="+pathname+"/&file=library.php";}
       }
     });
     return false;
@@ -282,4 +283,9 @@ function alterar_cliente(id, nome){//alteração de usuário, etc.
       }
     });
   }
+}
+
+
+function newNotification(){
+  $(".toast").toast('show');
 }

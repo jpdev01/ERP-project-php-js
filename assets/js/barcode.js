@@ -32,6 +32,7 @@ $('#checkInputCode').change(function () {
 
 function configCode(input) {
     var code = $("#inputCode").val();
+    code = parseInt(code);
     JsBarcode("#barcode", code);
 }
 

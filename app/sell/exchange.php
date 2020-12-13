@@ -44,7 +44,7 @@ foreach ($venda['produtos'] as $product) {
 
     </div>
     <?php
-    include "app/sell/input-products.php";
+    //include "app/sell/input-products.php";
     ?>
 </div>
 <div class="row">
@@ -53,6 +53,8 @@ foreach ($venda['produtos'] as $product) {
             Diferença: R$
         </p>
         <p id="diff" class="d-inline">0,00</p>
+        <button type="button" class="btn btn-light btn-sm" data-toggle="tooltip" title="ATENÇÃO! Isso gerará um saldo na conta do cliente, que poderá ser usado em futuras compras.">Confirmar troca</button>
+        
     </div>
 </div>
 
@@ -62,10 +64,10 @@ foreach ($venda['produtos'] as $product) {
 
     function productsForExchange(options) {
         diff = $("#diff-input").text();
-        newProducts = $("#vartotal").text();
-        newProducts = newProducts.split("$");
-        newProductsVlr = newProducts[1];
-        newProductsVlr = parseInt (newProductsVlr);
+        //newProducts = $("#vartotal").text();
+        //newProducts = newProducts.split("$");
+        //newProductsVlr = newProducts[1];
+        //newProductsVlr = parseInt (newProductsVlr);
 
         if (diff == "0,00") {
             var diff = 0;
@@ -88,7 +90,8 @@ foreach ($venda['produtos'] as $product) {
                     diff = diff + parseInt(data['vlrVenda']);
                 }
                 $('#diff-input').html(diff);
-                $('#diff').html(diff + newProductsVlr);
+                //$('#diff').html(diff + newProductsVlr);
+                $("#diff").html(diff);
 
 
 
