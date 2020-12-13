@@ -22,6 +22,7 @@ foreach ($venda['produtos'] as $product) {
 <div class="row">
     <div class="col-5 br-2 border-right ml-2">
         <input id="initialValue" value="<?php echo $venda['vlrTotal']; ?>" hidden>
+        <div id="diff-input" hidden>0,00</div>
         <p>Produtos:</p>
         <ul class="list-group">
             <?php
@@ -60,7 +61,7 @@ foreach ($venda['produtos'] as $product) {
     $("#vartotal").hide();
 
     function productsForExchange(options) {
-        diff = $("#diff").text();
+        diff = $("#diff-input").text();
         newProducts = $("#vartotal").text();
         newProducts = newProducts.split("$");
         newProductsVlr = newProducts[1];
@@ -82,11 +83,12 @@ foreach ($venda['produtos'] as $product) {
                 data = data[0];
 
                 if ($("#" + options.idInput).is(":checked")) {
-                    diff = diff - parseInt(data['vlrVenda']) + newProductsVlr;
+                    diff = diff - parseInt(data['vlrVenda']);
                 } else {
-                    diff = diff + parseInt(data['vlrVenda']) + newProductsVlr;
+                    diff = diff + parseInt(data['vlrVenda']);
                 }
-                $('#diff').html(diff);
+                $('#diff-input').html(diff);
+                $('#diff').html(diff + newProductsVlr);
 
 
 
