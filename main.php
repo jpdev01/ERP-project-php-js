@@ -281,6 +281,7 @@ include "modules/environment.php";
   <script type="text/javascript" src="assets/imports/JsBarcode.all.min.js"></script>
   <script type="text/javascript" src="assets/js/barcode.js"></script>
   <script type="text/javascript" src="assets/js/notifications.js"></script>
+  <script type="text/javascript" src="assets/js/exchange.js"></script>
 
   <script type="text/javascript" src="assets/framework/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
 </body>

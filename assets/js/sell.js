@@ -267,8 +267,3 @@ function select_cliente(id, cliente){
   // $('#exampleModal').modal('hide');
 }
 
-function productExchange(venda){
-  href = 'main.php?folder=app/sell/&file=exchange.php';
-  params = '&id=' + venda['idVenda'];
-  location.href = href + params;
-}
