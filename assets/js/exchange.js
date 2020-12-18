@@ -4,7 +4,7 @@ function productExchange(venda) {
     location.href = href + params;
 }
 
-function confirmExchange() {
+function confirmExchange(options) {
     classOfInput = "productsExchange";
     inputs = document.getElementsByClassName(classOfInput);
 
@@ -16,16 +16,25 @@ function confirmExchange() {
             exchangeListConfirmed.push(code);
         }
     }
-    jQuery.ajax({
-        type: "POST",
-        url: "app/sell/exchange/ins.php",
-        data: {
-            codes = exchangeListConfirmed
-        },
-        success: function (data) {
-            prepareNotice(data);
-        }
-    });
+    if (exchangeListConfirmed.length < 1) {
+        alert("Selecione no mínimo um produto para realizar a troca!");
+    }
+    
+    else {
+        $.ajax({
+            type: 'POST',
+            dataType: 'html',
+            url: "app/sell/exchange/ins.php",
+            data: {
+                exchangeListConfirmed: exchangeListConfirmed,
+                idVenda: options['idVenda']
+            },
+            success: function (msg) {
+                alert(msg);
+            }
+        });
+    }
+
 }
 
 

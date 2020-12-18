@@ -54,7 +54,9 @@ foreach ($venda['produtos'] as $product) {
         </p>
         <p id="diff" class="d-inline">0,00</p>
         <button type="button" class="btn btn-light btn-sm" data-toggle="tooltip" title="ATENÇÃO! Isso gerará um saldo na conta do cliente, que poderá ser usado em futuras compras."
-        onclick="confirmExchange();">Confirmar troca</button>
+        onclick="confirmExchange({
+            idVenda: <?php echo $idVenda; ?>
+        });">Confirmar troca</button>
         
     </div>
 </div>

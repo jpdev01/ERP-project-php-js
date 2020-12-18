@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $("#areaToaster").hide();
     var notice = Cookies.get("notification");
     if (notice != "null") {
         newNotification();
@@ -6,6 +7,7 @@ $(document).ready(function () {
 });
 
 function newNotification() {
+  $("#areaToaster").show();
     $(".toast").toast('show');
   }
   
