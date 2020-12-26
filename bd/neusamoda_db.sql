@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Dez-2020 às 17:31
+-- Tempo de geração: 26-Dez-2020 às 17:49
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.0
 
@@ -33,7 +33,8 @@ CREATE TABLE `actions` (
   `name` varchar(20) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `hour` time DEFAULT NULL,
-  `id_afect` int(11) NOT NULL
+  `id_afect` int(11) NOT NULL,
+  `table_afected` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -112,7 +113,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nome`, `apelido`, `cpf`, `dataNascimento`, `email`, `fone`, `celular`, `rg`, `dataRegistro`, `dsc`, `credito`, `tam`, `medida`, `refer`, `filiacao`, `cargo`, `uf`, `cidade`, `logradouro`, `bairro`, `complemento`, `cep`, `pai`, `mae`, `filho`, `avo`, `irmao`, `outros`) VALUES
-(00001, 'Neusa Aparecida Truchinski', 'Neusinha', '63086956968', '1964-12-10', 'nuesatru@gmail.com', 4734258911, 47999880342, '2195912', '2020-12-22', '', '0.00', 'GG', 44, 'Neusa Moda', '', 'Empresária', 'SC', 'Joinville', 'Rua Dona Elza Meinert', 'Costa e Silva', 'até 1178/1179', '89218-650', 'José Truchinski', 'Ivanilde L Truchinski', 'João P', NULL, NULL, NULL);
+(00001, 'Neusa Aparecida Truchinski', 'Neusinha', '63086956968', '1964-12-10', 'nuesatru@gmail.com', 4734258911, 47999880342, '2195912', '2020-12-22', '', '20.00', 'GG', 44, 'Neusa Moda', '', 'Empresária', 'SC', 'Joinville', 'Rua Dona Elza Meinert', 'Costa e Silva', 'até 1178/1179', '89218-650', 'José Truchinski', 'Ivanilde L Truchinski', 'João P', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,6 +164,10 @@ CREATE TABLE `pagamentos` (
   `frmPgto` tinyint(1) DEFAULT NULL COMMENT 'O->dinheiro\n1-> cartao de crédito\n2->cartão de débito\n3->cheque\n4->crediario\n5->Depósito/transferência'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `pagamentos`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -194,7 +199,8 @@ CREATE TABLE `produtos` (
 -- Extraindo dados da tabela `produtos`
 --
 
-
+INSERT INTO `produtos` (`id`, `nome`, `vlrVenda`, `dsc`, `status`, `cor`, `genero`, `dataCompra`, `dataVenda`, `qtde`, `estilo`, `imagem`, `tam`, `vlrPago`, `colecao`, `code`, `categorias_id`, `fornecedores_id`) VALUES
+(2, 'Produto 1', '20.00', NULL, 0, 'Amarelo', '0', '2020-12-26', NULL, 12, NULL, NULL, 'P', '0.00', NULL, '1', 001, 1);
 
 -- --------------------------------------------------------
 
@@ -362,13 +368,13 @@ ALTER TABLE `fornecedores`
 -- AUTO_INCREMENT de tabela `pagamentos`
 --
 ALTER TABLE `pagamentos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -380,7 +386,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `vendas`
 --
 ALTER TABLE `vendas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para despejos de tabelas
