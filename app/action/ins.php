@@ -5,6 +5,12 @@ function newActionDatabase($params){
     if ($params['id_afected'] == null){
         $params['id_afected'] = $db_connection->lastInsertId();
     }
+    if (!isset($params['date'])){
+      $params['date'] = date("Y-m-d");
+    }
+    if (!isset($params['hour'])){
+      $params['hour'] = date("H:i:s");
+    }
     $cols = ['id', 'type', 'name', 'date', 'hour', 'id_afected', 'table_afected'];
     $sql = "INSERT INTO actions (";
     foreach ($cols as $key => $value) {

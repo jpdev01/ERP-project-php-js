@@ -33,15 +33,6 @@ if ($stm_sql->rowCount()==0){
 
   if($result){
     $msg = "Categoria " .$nome ." cadastrada com sucesso!";
-    $params = [
-      'type' => 'insert',
-      'name' => 'nova categoria: '.$nome,
-      'table_afected' => 'categories',
-      'id_afected' => null,
-      'date' => date("Y-m-d"),
-      'hour' => date("H:i:s")
-    ];
-    newActionDatabase($params);
   }else{
     $msg = "Falha ao cadastrar!";
   }
@@ -50,15 +41,5 @@ if ($stm_sql->rowCount()==0){
 else{
   $msg= "Essa categoria já está cadastrada no banco de dados.";
 }
-
-include "../action/ins.php";
-$params = [
-  'type' => 'insert',
-  'name' => 'nova categoria: '.$nome,
-  'table_afected' => 'categories',
-  'id_afected' => null,
-  'date' => date("Y-m-d"),
-  'hour' => date("H:i:s")
-];
 echo $msg;
 ?>
