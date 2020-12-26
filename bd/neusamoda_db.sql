@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Dez-2020 às 17:49
+-- Tempo de geração: 26-Dez-2020 às 19:33
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.0
 
@@ -29,13 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `actions` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(10) DEFAULT NULL,
-  `name` varchar(20) DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  `name` varchar(40) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `hour` time DEFAULT NULL,
-  `id_afect` int(11) NOT NULL,
+  `id_afected` int(11) NOT NULL,
   `table_afected` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `actions`
+--
+
 
 -- --------------------------------------------------------
 
@@ -199,8 +204,6 @@ CREATE TABLE `produtos` (
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `nome`, `vlrVenda`, `dsc`, `status`, `cor`, `genero`, `dataCompra`, `dataVenda`, `qtde`, `estilo`, `imagem`, `tam`, `vlrPago`, `colecao`, `code`, `categorias_id`, `fornecedores_id`) VALUES
-(2, 'Produto 1', '20.00', NULL, 0, 'Amarelo', '0', '2020-12-26', NULL, 12, NULL, NULL, 'P', '0.00', NULL, '1', 001, 1);
 
 -- --------------------------------------------------------
 
@@ -332,7 +335,7 @@ ALTER TABLE `vendas`
 -- AUTO_INCREMENT de tabela `actions`
 --
 ALTER TABLE `actions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `caixa`
@@ -344,7 +347,7 @@ ALTER TABLE `caixa`
 -- AUTO_INCREMENT de tabela `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` tinyint(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` tinyint(3) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
