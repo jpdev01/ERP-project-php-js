@@ -10,6 +10,7 @@ function newActionDatabase($params){
     include '../../security/database/connection.php';
     if (!isset($params['id_afected']) || $params['id_afected'] == null){
         $params['id_afected'] = $db_connection->lastInsertId();
+        $msg='entrou';
     }
     if (!isset($params['date'])){
       $params['date'] = date("Y-m-d");
@@ -47,6 +48,6 @@ function newActionDatabase($params){
     $stm_sql-> bindParam(':hour', $params['hour']);
 
     $result = $stm_sql->execute();
-    echo "boa!!!";
+    echo $msg;
 }
 ?>

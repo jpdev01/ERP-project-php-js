@@ -80,6 +80,7 @@ jQuery(document).ready(function () {
       url: pathname + "/upd.php",
       data: dados,
       success: function (data) {
+        // Falta verificar se o insert ocorreu corretamente!!!
         prepareNewDatabaseAction();
         // if(!alert(data)){window.location.reload();}
         prepareNotice(data);
@@ -303,6 +304,7 @@ function newDatabaseAction(params){
       table_afected: params.table_afected
     },
     success: function (data) {
+      alert(data);
       console.log("INSERT INTO actions ...ok");
     },
     error: function (){
