@@ -113,7 +113,7 @@ include "app/sell/input-products.php";
     </div>
     <div class="form-group col-md-4 <?php echo $inputGroupSize; ?>" id="flagField">
             <label for="flag">bandeira:</label>
-            <select class="form-control form-control-sm" id="flag" name="flag" required>
+            <select class="form-control form-control-sm" id="flag" name="flag">
               <option value=''>Selecione</option>
               <?php
               foreach ($FLAGS as $key => $flag) {

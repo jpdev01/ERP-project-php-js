@@ -3,7 +3,7 @@
 include "../../security/database/connection.php";
 $msg="";
 $idv = $_POST['id'];
-$sql ="SELECT v.*, c.nome FROM vendas v INNER JOIN clientes c ON v.clientes_id = c.id WHERE v.id=:idvenda";
+$sql ="SELECT v.*, c.nome AS nomecliente, c.credito AS creditocliente FROM vendas v INNER JOIN clientes c ON v.clientes_id = c.id WHERE v.id=:idvenda";
 $stm_sql = $db_connection->prepare($sql);
 $stm_sql->bindParam(':idvenda', $idv);
 $stm_sql-> execute();
@@ -17,7 +17,7 @@ $c = $stm_sql->fetch(PDO::FETCH_ASSOC);
     <img src="assets/css/bootstrap-icons-1.0.0/bag.svg" class="card-img" alt="pesquisar" width="" height="" title="Bootstrap">
   </div></div></div>
   <div class="card-body">
-    <h5 class="card-title">Cliente: <?php echo $c['nome']; ?></h5>
+    <h5 class="card-title">Cliente: <?php echo $c['nomecliente']; ?></h5>
     <p class="card-text">Data da compra: <?php echo date('d/m/Y h:m', strtotime($c['data'])); ?></p>
     <p class="card-text">Forma de pagamento:
     <?php
@@ -84,9 +84,9 @@ $c = $stm_sql->fetch(PDO::FETCH_ASSOC);
     ?></p>
   </div>
 </div>
-<form action='' method='post' id='ajax_form' name='ajax_form'>
+<form action='' method='post' id='ajax_form' name='ajax_form' class="mb-2">
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 input-group-sm">
       <label for="frmpgto">Forma de pagamento</label>
       <select class="form-control" name='frmpgto' id='frmpgto'>
         <option selected>...</option>
@@ -98,20 +98,22 @@ $c = $stm_sql->fetch(PDO::FETCH_ASSOC);
         <option value='5'>Depósito/Transferência</option>
       </select>
     </div>
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-6 input-group-sm">
       <label for="pgto-venda-selec">Valor:</label>
       <input type="number" class="form-control" id="pgto-venda-selec" name='pgto-venda-selec'>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group input-group-sm">
     <label for="obs">Observação: </label>
     <input type="text" class="form-control" id="obs" name='obs'placeholder="observação...">
   </div>
   <div class="form-group" hidden>
     <input type="date" class="form-control" id="data" name='data' value="<?php echo date('Y-m-d');?>">
   </div>
-  <button type="submit" class="btn btn-primary">Inserir</button>
+  <button type="submit" class="btn btn-success btn-sm">Inserir</button>
+  <button type="button" class="btn btn-outline-light btn-sm" onclick="show_vouchers('find-buy-select.php', <?php echo $c['creditocliente']; ?>);">Verificar vouchers</button>
 </form>
+<div id="voucher" class="mb-2"></div>
 <?php
 $c = serialize ($c);
 setcookie('pgto', $c);

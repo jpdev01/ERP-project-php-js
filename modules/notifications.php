@@ -2,7 +2,6 @@
 if (isset($_COOKIE['notification'])) {
     $notice = $_COOKIE['notification'];
     $notice = explode(',', $notice);
-}
 ?>
 <div aria-live="assertive" aria-atomic="true" style="position: absolute; top: 50px; right: 10px; min-height: 200px;" id="areaToaster">
     <div class="toast" role="alert" data-autohide="false">
@@ -19,4 +18,7 @@ if (isset($_COOKIE['notification'])) {
         </div>
     </div>
 </div>
+<?php
+}
+?>
 

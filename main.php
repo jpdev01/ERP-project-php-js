@@ -35,7 +35,7 @@ include "modules/environment.php";
 
 <!-- <script src="assets/js/dashboard.js"></script> -->
 
-<body class="sb-nav-fixed" style="background-color: #DCDCDC;">
+<body class="sb-nav-fixed sb-sidenav-toggled" style="background-color: #DCDCDC;">
 
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 8%;">

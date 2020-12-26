@@ -18,7 +18,7 @@ function getSaldo($idCliente){
     $stm_sql->bindParam(':idCliente', $idCliente);
     $result = $stm_sql->execute();
     $c = $stm_sql->fetch(PDO::FETCH_ASSOC);
-    if ($c['credito'] == ""){
+    if ($c['credito'] == "" || $c['credito'] == null){
         return 0;
     }
     return $c['credito'];

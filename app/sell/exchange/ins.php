@@ -82,8 +82,8 @@ foreach ($codes as $key => $code){
         if ($searchIndex >= 0){
             unset($products[$searchIndex]);
             $products = organizeArray($products);
+            $saldo = $saldo + intVal($product['vlrVenda']);
         }
-        $saldo = $saldo + intVal($product['vlrVenda']);
     }
     else{
         error();

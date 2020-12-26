@@ -3,6 +3,8 @@ jQuery(document).ready(function(){
 
     usuario = document.frmlogin.usuariotxt.value;
     password = document.frmlogin.senhatxt.value;
+
+ 
     if (usuario==""){
       alert("Preencha o campo Usuário!");
       // return false;

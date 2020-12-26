@@ -19,6 +19,10 @@ $stm_sql->bindParam(':id', $id);//quero trocar o que tem no parâmetro id pelo q
 $stm_sql-> execute();
 
 $cliente = $stm_sql->fetch(PDO::FETCH_ASSOC);
+
+if ($cliente['credito'] == null){
+  $cliente['credito'] = "0,00";
+}
 //var_dump($user['email']);
 
 
@@ -89,6 +93,7 @@ $cliente = $stm_sql->fetch(PDO::FETCH_ASSOC);
       <p class="border-bottom"><strong>Informações de cadastro</strong></p>
       <p><strong>Tamanho: </strong><?php echo $cliente['tam'];?> <strong> - Medida: </strong><?php echo $cliente['medida'];?> </p>
       <p><strong>Data de registro:</strong><?php echo $cliente['dataRegistro'];?>  </p>
+      <p><strong>Saldo: </strong>R$<?php echo $cliente['credito'];?>  </p>
     </div>
     <div class="col-6 pt-4">
       <p class="border-bottom"><strong>Mais Informações</strong></p>

@@ -1,5 +1,7 @@
-<script type="text/javascript" src="assets/js/dbfunctions.js"></script>
-<form action="" method="post" id="ajax_form">
+<!--
+  <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
+-->
+  <form action="" method="post" id="ajax_form">
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="nome">Nome:</label>

@@ -48,7 +48,27 @@ if ($metPgto==0){//avista
 // $cliente_table = $stm_sql->fetch(PDO::FETCH_ASSOC);
 // $idcliente = $cliente_table['id'];
 // $nomecliente = $cliente_table['nome'];
-$sql = "INSERT INTO vendas (id, vlrTotal, data, dsc, metPgto, frmPgto, vlrPago, qtdeParc, clientes_id, produtos, usuarios_id, bandeira) VALUES (:id, :vlrTotal, :data, :dsc, :metPgto, :frmPgto, :vlrPago, :qtdeParc, :cliente, :produtos, :iduser, :bandeira)";
+
+$col = ['id', 'vlrTotal', 'data', 'dsc', 'metPgto', 'frmPgto', 'vlrPago', 'qtdeParc', 'clientes_id', 'produtos', 'usuarios_id', 'bandeira'];
+$sql = "INSERT INTO vendas (";
+foreach ($col as $key => $value){
+  $sql.= $value;
+        if ($key + 1 !=  sizeof($col)){
+          $sql.= ", ";
+        }else{
+          $sql.= ") VALUES (";
+        }
+}
+
+foreach ($col as $key => $value) {
+  $sql.= ":".$value;
+  if ($key + 1 != sizeof($col)){
+    $sql.= ", ";
+  }else{
+    $sql.= ")";
+  }
+}
+
 $stm_sql = $db_connection-> prepare ($sql);
 
 $id = null;
@@ -60,9 +80,9 @@ $stm_sql-> bindParam(':metPgto', $metPgto);
 $stm_sql-> bindParam(':frmPgto', $frmpgto);
 $stm_sql-> bindParam(':vlrPago', $vlrPago);
 $stm_sql-> bindParam(':qtdeParc', $qtdeParc);
-$stm_sql-> bindParam(':cliente', $idcliente);
+$stm_sql-> bindParam(':clientes_id', $idcliente);
 $stm_sql-> bindParam(':produtos', $codes);
-$stm_sql-> bindParam(':iduser', $iduser);
+$stm_sql-> bindParam(':usuarios_id', $iduser);
 $stm_sql-> bindParam(':bandeira', $bandeira);
 // $stm_sql-> bindParam(':condicional', $condicional);
 

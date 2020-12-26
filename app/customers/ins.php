@@ -65,7 +65,6 @@
       $stm_sql = $db_connection-> prepare ($sql);
 
       $id = null;
-
       $stm_sql-> bindParam(':id', $id);
       $stm_sql-> bindParam(':nome', $nome);
       $stm_sql-> bindParam(':cpf', $cpf);
@@ -91,6 +90,13 @@
       $stm_sql-> bindParam(':filiacao', $filiacao);
       $stm_sql-> bindParam(':cargo', $cargo);
       $stm_sql-> bindParam(':credito', $credito);
+
+      $stm_sql-> bindParam(':pai', $pai);
+      $stm_sql-> bindParam(':mae', $mae);
+      $stm_sql-> bindParam(':avo', $avo);
+      $stm_sql-> bindParam(':filho', $filho);
+      $stm_sql-> bindParam(':irmao', $irmao);
+      $stm_sql-> bindParam(':outros', $outros);
 
       $result = $stm_sql->execute();
 

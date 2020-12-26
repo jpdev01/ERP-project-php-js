@@ -1,6 +1,7 @@
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
+  <!--
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+-->
   <form action="" method="post" id="ajax_form">
     <div class="form-row">
       <div class="form-group col-md-3">
