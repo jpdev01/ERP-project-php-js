@@ -30,7 +30,8 @@ function confirmExchange(options) {
                 idVenda: options['idVenda']
             },
             success: function (msg) {
-                alert(msg);
+                prepareNotice(msg);
+                redirectToLibraryPage();
             }
         });
     }
@@ -68,9 +69,6 @@ function productsForExchange(options) {
             $('#diff-input').html(diff);
             //$('#diff').html(diff + newProductsVlr);
             $("#diff").html(diff);
-
-
-
         }
     });
 

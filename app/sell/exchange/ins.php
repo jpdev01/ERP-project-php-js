@@ -61,6 +61,42 @@ function organizeArray($products){
     return $productsFull;
 }
 
+function updatesSaleValue($venda, $saldoGenerate){
+    include '../../../security/database/connection.php';
+    $vlrInitial = getVlrTotal($venda);
+    $idVenda = $venda['id'];
+    $vlrFinal = $vlrInitial - $saldoGenerate;
+    $sql = "UPDATE vendas SET vlrTotal=:vlrFinal WHERE id=:idVenda";
+    $stm_sql = $db_connection->prepare($sql);
+    $stm_sql->bindParam(':idVenda', $idVenda);
+    $stm_sql->bindParam(':vlrFinal', $vlrFinal);
+    $result = $stm_sql->execute();
+    return $result;
+}
+
+function updatesPaidAmount($venda, $saldoGenerate){
+    include '../../../security/database/connection.php';
+    $vlrInitial = getVlrPago($venda);
+    $idVenda = $venda['id'];
+    $vlrFinal = $vlrInitial - $saldoGenerate;
+    $sql = "UPDATE vendas SET vlrPago=:vlrFinal WHERE id=:idVenda";
+    $stm_sql = $db_connection->prepare($sql);
+    $stm_sql->bindParam(':idVenda', $idVenda);
+    $stm_sql->bindParam(':vlrFinal', $vlrFinal);
+    $result = $stm_sql->execute();
+    return $result;
+}
+
+function getVlrPago($venda){
+    return $venda['vlrPago'];
+}
+
+function getVlrTotal($venda){
+    if (isset($venda['vlrTotal'])){
+        return $venda['vlrTotal'];
+    }
+}
+
 $venda = get_venda($idVenda);
 
 $products = $venda['produtos'];
@@ -82,7 +118,15 @@ foreach ($codes as $key => $code){
         if ($searchIndex >= 0){
             unset($products[$searchIndex]);
             $products = organizeArray($products);
-            $saldo = $saldo + intVal($product['vlrVenda']);
+            $product['vlrVenda'] = intVal($product['vlrVenda']);
+            if (getVlrPago($venda) >= $product['vlrVenda']){
+                $saldo = $saldo + $product['vlrVenda'];
+            }
+            else {
+                $saldo = $saldo + getVlrPago($venda);
+            }
+            $updated = updatesSaleValue($venda, $product['vlrVenda']);
+            $updated2 = updatesPaidAmount($venda, $saldo);
         }
     }
     else{

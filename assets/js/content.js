@@ -145,3 +145,14 @@ function addFamily(){
     $(elementHtml).show();
   }
 }
+
+function redirectToLibraryPage(){
+  var pathname = window.location.href;
+    pathname = pathname.split("folder=");
+    pathname = pathname[1].split("/&");
+    pathname = pathname[0];
+    if (pathname.indexOf("exchange") !== -1){
+      pathname = "app/sell";
+    }
+    window.location.href = "main.php?folder=" + pathname + "/&file=library.php";
+}
