@@ -55,9 +55,11 @@ jQuery(document).ready(function () {
         data: dados,
         success: function (data) {
           if (pathname == "app/payment") {
+            prepareNewDatabaseAction();
             prepareNotice(data);
             window.location.href = "main.php?folder=" + pathname + "/&file=frmins.php";
           } else {
+            prepareNewDatabaseAction();
             prepareNotice(data);
             window.location.href = "main.php?folder=" + pathname + "/&file=library.php";
           }
@@ -78,6 +80,7 @@ jQuery(document).ready(function () {
       url: pathname + "/upd.php",
       data: dados,
       success: function (data) {
+        prepareNewDatabaseAction();
         // if(!alert(data)){window.location.reload();}
         prepareNotice(data);
         window.location.href = "main.php?folder=" + pathname + "/&file=library.php";
@@ -286,4 +289,24 @@ function alterar_cliente(id, nome) {//alteração de usuário, etc.
     });
   }
 }
+function prepareNewDatabaseAction(){
+  $("#BtnNewDatabaseAction").click();
+}
 
+function newDatabaseAction(params){
+  jQuery.ajax({
+    type: "POST",
+    url: "app/action/ins.php",
+    data: {
+      type: params.type,
+      name: params.name,
+      table_afected: params.table_afected
+    },
+    success: function (data) {
+      console.log("INSERT INTO actions ...ok");
+    },
+    error: function (){
+      console.log("INSERT into actions ...error! Contate o administrador do sistema!");
+    }
+  });
+}

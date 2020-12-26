@@ -1,4 +1,8 @@
-
+<button type="" class="btn btn-success" id="BtnNewDatabaseAction" onclick="newDatabaseAction({
+  name: $('#nome').val(),
+  type: 'insert',
+  table_afected: 'categorias'
+});" hidden>Upload historic</button>
   <!--
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 -->

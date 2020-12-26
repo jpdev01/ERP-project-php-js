@@ -1,8 +1,14 @@
 <?php
+$params = [];
+$params['type'] = isset($_POST['type']) ? $_POST['type'] : null;
+$params['name']  = isset($_POST['name']) ? $_POST['name'] : null;
+$params['table_afected']  = isset($_POST['table_afected']) ? $_POST['table_afected'] : null;
+newActionDatabase($params);
+
 
 function newActionDatabase($params){
     include '../../security/database/connection.php';
-    if ($params['id_afected'] == null){
+    if (!isset($params['id_afected']) || $params['id_afected'] == null){
         $params['id_afected'] = $db_connection->lastInsertId();
     }
     if (!isset($params['date'])){
@@ -41,4 +47,6 @@ function newActionDatabase($params){
     $stm_sql-> bindParam(':hour', $params['hour']);
 
     $result = $stm_sql->execute();
+    echo "boa!!!";
 }
+?>
