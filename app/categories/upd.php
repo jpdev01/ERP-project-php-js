@@ -43,4 +43,5 @@ else{
   $msg= "Essa categoria já está cadastrada no banco de dados.";
 }
 echo $msg;
+
 ?>
