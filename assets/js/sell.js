@@ -267,3 +267,6 @@ function select_cliente(id, cliente){
   // $('#exampleModal').modal('hide');
 }
 
+function viewHistoric_sell(object){
+  window.location.href = "main.php?folder=app/sell/focus-historic/&file=component.php&idvenda=" + object.idVenda;
+}
