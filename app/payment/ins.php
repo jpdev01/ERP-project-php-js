@@ -53,5 +53,8 @@ include "../../security/database/connection.php"; //a função include importa u
   // }
   }
 echo $msg;
-
+$table = "pagamentos";
+$type = "insert";
+$name = $idvenda;
+include "../action/ins.php";
 ?>

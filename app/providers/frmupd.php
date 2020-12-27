@@ -32,3 +32,4 @@ $fornecedor = $stm_sql->fetch(PDO::FETCH_ASSOC);
   <button type="reset" class="btn btn-danger">Apagar</button>
   <button type="submit" class="btn btn-success">Salvar</button>
 </form>
+

@@ -110,4 +110,9 @@
     $msg= "Esse cliente já está cadastrado no banco de dados.";
   }
   echo $msg;
+
+  $table = "clientes";
+  $type = "insert";
+  $name = $nome;
+  include "../action/ins.php";
 ?>

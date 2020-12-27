@@ -77,4 +77,8 @@ setcookie('cliente', '', null, '/');
 setcookie('sell', '', null, '/');
 setcookie('explodesell', 'none', null, '/');
 echo $msg;
+$table = "delivery";
+$type = "insert";
+$name = $idcliente;
+include "../action/ins.php";
 ?>

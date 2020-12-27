@@ -55,11 +55,11 @@ jQuery(document).ready(function () {
         data: dados,
         success: function (data) {
           if (pathname == "app/payment") {
-            prepareNewDatabaseAction();
+            //prepareNewDatabaseAction();
             prepareNotice(data);
             window.location.href = "main.php?folder=" + pathname + "/&file=frmins.php";
           } else {
-            prepareNewDatabaseAction();
+            //prepareNewDatabaseAction();
             prepareNotice(data);
             window.location.href = "main.php?folder=" + pathname + "/&file=library.php";
           }
@@ -81,7 +81,7 @@ jQuery(document).ready(function () {
       data: dados,
       success: function (data) {
         // Falta verificar se o insert ocorreu corretamente!!!
-        prepareNewDatabaseAction();
+        //prepareNewDatabaseAction();
         // if(!alert(data)){window.location.reload();}
         prepareNotice(data);
         window.location.href = "main.php?folder=" + pathname + "/&file=library.php";
@@ -291,7 +291,7 @@ function alterar_cliente(id, nome) {//alteração de usuário, etc.
   }
 }
 function prepareNewDatabaseAction(){
-  $("#BtnNewDatabaseAction").click();
+  //$("#BtnNewDatabaseAction").click();
 }
 
 function newDatabaseAction(params){

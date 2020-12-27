@@ -82,6 +82,8 @@ $inputGroupSize = "input-group-sm";
     </div>
   </div>
 </div>
+
+
 <!--
 <script type="text/javascript" src="assets/js/dbfunctions.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>

@@ -78,4 +78,8 @@
     $msg= "Esse produto já está cadastrado no banco de dados.";
   }
   echo $msg;
+  $table = "produtos";
+$type = "insert";
+$name = $nome;
+include "../action/ins.php";
 ?>

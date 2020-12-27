@@ -85,6 +85,10 @@ $msg = "";
     $msg = "Esse usuário já está cadastrado no banco de dados.";
   }
   
-echo $msg
+echo $msg;
+$table = "clientes";
+$type = "update";
+$name = $nome;
+include "../action/ins.php";
 ?>
 

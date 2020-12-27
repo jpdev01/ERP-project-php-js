@@ -44,4 +44,8 @@ else{
 }
 echo $msg;
 
+$table = "categorias";
+$type = "update";
+$name = $nome;
+include "../action/ins.php";
 ?>

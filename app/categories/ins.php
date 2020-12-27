@@ -4,9 +4,7 @@ $id = null;
 $nome              = $_POST['nome'];
 $dsc              = $_POST['desc'];
 
-
 $msg = "erro de programação";
-
 
 include "../../security/database/connection.php";
 
@@ -42,4 +40,9 @@ else{
   $msg= "Essa categoria já está cadastrada no banco de dados.";
 }
 echo $msg;
+
+$table = "categorias";
+$type = "insert";
+$name = $nome;
+include "../action/ins.php";
 ?>
